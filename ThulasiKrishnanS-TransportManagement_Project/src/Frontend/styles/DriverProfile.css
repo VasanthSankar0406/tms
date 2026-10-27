@@ -1,0 +1,150 @@
+.driver-profile-page {
+  min-height: 100vh;
+  padding: 32px 20px 48px;
+  background: linear-gradient(180deg, rgba(243, 247, 251, 0.88), rgba(232, 238, 245, 0.92));
+}
+
+.driver-profile-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.back-btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #d4e0ea;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #143e66;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.back-btn:hover {
+  background: #f3f8fc;
+  border-color: #bcd0e0;
+}
+
+.driver-profile-container h1 {
+  margin: 0;
+  color: #10243a;
+  font-size: clamp(1.6rem, 2.2vw, 2.15rem);
+}
+
+.profile-content-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.details-card {
+  padding: 26px;
+  border: 1px solid rgba(9, 31, 55, 0.08);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 18px 40px rgba(11, 30, 52, 0.08);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  padding: 12px;
+  border-radius: 14px;
+  background: #edf4fb;
+  color: #155185;
+}
+
+.card-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #10243a;
+}
+
+.profile-photo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.profile-photo-large {
+  width: 128px;
+  height: 128px;
+  border-radius: 20px;
+  object-fit: cover;
+  border: 3px solid #edf4fb;
+}
+
+.info-row {
+  display: grid;
+  grid-template-columns: minmax(140px, 180px) 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid #e4edf4;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  color: #41576c;
+}
+
+.label-icon {
+  color: #2b638f;
+}
+
+.info-value {
+  color: #10243a;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.loading,
+.error {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #56697c;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 900px) {
+  .profile-content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .driver-profile-page {
+    padding: 20px 14px 32px;
+  }
+
+  .details-card {
+    padding: 20px;
+  }
+
+  .info-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}

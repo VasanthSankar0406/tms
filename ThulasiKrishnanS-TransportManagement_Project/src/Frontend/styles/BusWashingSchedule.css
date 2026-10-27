@@ -1,0 +1,314 @@
+/* Bus Washing Schedule Styling */
+.washing-page-container {
+  padding: 24px;
+  background: #f8fafc;
+  min-height: 100%;
+  color: #1e293b;
+}
+
+.washing-header-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  padding: 24px 28px;
+  border-radius: 16px;
+  color: #ffffff;
+  box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.25);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.washing-header-panel h1 {
+  font-size: 26px;
+  font-weight: 800;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.5px;
+}
+
+.washing-kicker {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  color: #bae6fd;
+  margin: 0 0 4px 0;
+}
+
+.washing-subtitle {
+  font-size: 14px;
+  color: #e0f2fe;
+  margin: 0;
+  max-width: 650px;
+}
+
+.washing-toast,
+.washing-reminder {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding: 14px 18px;
+  border: 1px solid #bae6fd;
+  border-radius: 12px;
+  background: #f0f9ff;
+  color: #0c4a6e;
+}
+
+.washing-toast { justify-content: space-between; }
+.washing-toast button { border: 0; background: transparent; color: inherit; font-size: 22px; cursor: pointer; }
+.washing-reminder > svg { flex: 0 0 auto; font-size: 20px; }
+.washing-reminder strong { display: block; font-size: 15px; }
+.washing-reminder p { margin: 4px 0 0; font-size: 13px; }
+.washing-reminder-due { background: #fff7ed; border-color: #fed7aa; color: #9a3412; }
+.washing-reminder-clear { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+
+.washing-table-card { overflow: hidden; }
+.washing-table th, .washing-table td { vertical-align: middle; }
+.washing-row-due { background: #fffaf0; }
+.washing-bus-name, .washing-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #0f172a;
+  font-weight: 700;
+}
+.washing-bus-name svg, .washing-date svg { color: #0284c7; }
+.washing-vehicle-id { display: block; margin: 4px 0 0 24px; color: #64748b; }
+.washing-complete-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: #16a34a;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+.washing-complete-button:disabled { opacity: .6; cursor: wait; }
+.washing-days-remaining { color: #64748b; font-size: 12px; font-weight: 600; }
+.washing-empty-state { padding: 36px; text-align: center; color: #64748b; }
+
+@media (max-width: 700px) {
+  .washing-page-container { padding: 12px; }
+  .washing-header-panel { padding: 18px; }
+  .washing-header-panel h1 { font-size: 22px; }
+  .washing-table { min-width: 700px; }
+}
+
+/* Service Bay Status Bar */
+.bays-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.bay-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bay-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bay-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.bay-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot-active { background: #22c55e; box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2); }
+.dot-idle { background: #94a3b8; }
+
+.bay-current-bus {
+  font-size: 13px;
+  color: #475569;
+}
+
+/* Wash Type Badges */
+.wash-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.type-pressure { background: #e0f2fe; color: #0284c7; }
+.type-interior { background: #f3e8ff; color: #7e22ce; }
+.type-sanitization { background: #ecfdf5; color: #047857; }
+.type-full { background: #fef3c7; color: #b45309; }
+
+/* Checklist Pills */
+.checklist-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.checklist-pill {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pill-checked {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.pill-unchecked {
+  background: #f1f5f9;
+  color: #94a3b8;
+}
+
+/* Action button icons in table */
+.action-buttons-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.today-scheduled-row {
+  background-color: #f0f9ff !important;
+  border-left: 4px solid #0284c7 !important;
+}
+
+.wash-type-simple-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+}
+
+.next-wash-date-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #f1f5f9;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+}
+
+.btn-icon-edit {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-icon-edit:hover {
+  color: #0284c7;
+  background: #e0f2fe;
+}
+
+.btn-mark-washed-instant {
+  background: #16a34a !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-weight: 700 !important;
+  padding: 6px 12px !important;
+  border-radius: 6px !important;
+  cursor: pointer;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  box-shadow: 0 2px 4px rgba(22, 163, 74, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-mark-washed-instant:hover {
+  background: #15803d !important;
+  transform: translateY(-1px);
+}
+
+.status-done-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #166534;
+  background: #dcfce7;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.bus-avatar-tag {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: #e0f2fe;
+  color: #0284c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.today-chip {
+  background: #0284c7;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.simple-wash-option-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #0f172a;
+}
+

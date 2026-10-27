@@ -1,0 +1,322 @@
+/* Bus Seating Allocation CSS */
+.seating-page-container {
+  padding: 24px;
+  background: #f8fafc;
+  min-height: 100%;
+  color: #1e293b;
+}
+
+.seating-header-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+  padding: 24px 28px;
+  border-radius: 16px;
+  color: #ffffff;
+  box-shadow: 0 10px 25px -5px rgba(13, 148, 136, 0.25);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.seating-header-panel h1 {
+  font-size: 26px;
+  font-weight: 800;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.5px;
+}
+
+.seating-kicker {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  color: #99f6e4;
+  margin: 0 0 4px 0;
+}
+
+.seating-subtitle {
+  font-size: 14px;
+  color: #ccfbf1;
+  margin: 0;
+  max-width: 650px;
+}
+
+/* Bus Selector Bar */
+.bus-selector-card {
+  background: #ffffff;
+  padding: 20px 24px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.bus-selector-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.bus-dropdown-select {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1.5px solid #0d9488;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f766e;
+  background: #f0fdfa;
+  outline: none;
+  cursor: pointer;
+}
+
+.bus-meta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f1f5f9;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+}
+
+/* Legend */
+.seating-legend {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 12px 18px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 20px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.legend-swatch {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+}
+
+.swatch-avail { background: #dcfce7; border: 2px solid #22c55e; }
+.swatch-occupied { background: #dbeafe; border: 2px solid #2563eb; }
+.swatch-staff { background: #ffedd5; border: 2px solid #ea580c; }
+.swatch-driver { background: #fef08a; border: 2px solid #ca8a04; }
+
+/* Visual Bus Chassis Layout */
+.bus-layout-wrapper {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  margin-bottom: 28px;
+  overflow-x: auto;
+}
+
+.bus-chassis {
+  max-width: 680px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 3px solid #334155;
+  border-radius: 36px 36px 20px 20px;
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.1);
+  padding: 24px 20px 30px 20px;
+  position: relative;
+}
+
+/* Bus Cabin Front */
+.bus-cabin-front {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+  border-bottom: 2px dashed #cbd5e1;
+}
+
+.bus-windshield {
+  flex: 1;
+  text-align: center;
+  background: #e0f2fe;
+  padding: 10px 14px;
+  border-radius: 20px;
+  margin: 0 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0369a1;
+  border: 1.5px solid #7dd3fc;
+}
+
+.bus-entry-door {
+  background: #f1f5f9;
+  border: 2px solid #94a3b8;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #475569;
+}
+
+.bus-driver-area {
+  background: #fef9c3;
+  border: 2px solid #eab308;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #854d0e;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Seating Rows Grid */
+.bus-rows-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bus-row {
+  display: grid;
+  grid-template-columns: 32px 1fr 1fr 48px 1fr 1fr;
+  align-items: center;
+  gap: 10px;
+}
+
+.row-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-align: center;
+}
+
+.aisle-gap {
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: #cbd5e1;
+  letter-spacing: 1px;
+}
+
+/* Individual Seat Box */
+.bus-seat {
+  position: relative;
+  background: #f8fafc;
+  border: 2px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 8px 6px;
+  min-height: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.bus-seat:hover {
+  transform: scale(1.04);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 5;
+}
+
+.seat-avail {
+  background: #f0fdf4;
+  border-color: #22c55e;
+  color: #15803d;
+}
+
+.seat-avail:hover {
+  background: #dcfce7;
+}
+
+.seat-occupied {
+  background: #eff6ff;
+  border-color: #2563eb;
+  color: #1e3a8a;
+}
+
+.seat-staff {
+  background: #fff7ed;
+  border-color: #ea580c;
+  color: #9a3412;
+}
+
+.seat-number-tag {
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+
+.seat-passenger-initials {
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 70px;
+  background: rgba(37, 99, 235, 0.12);
+  padding: 1px 4px;
+  border-radius: 4px;
+}
+
+.seat-status-sub {
+  font-size: 9px;
+  opacity: 0.8;
+}
+
+/* Rear Bench Row */
+.bus-rear-row {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 2px dashed #cbd5e1;
+}
+
+.rear-bench-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+/* Seat Details Modal / Tooltip */
+.seat-passenger-badge {
+  background: #f1f5f9;
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 16px;
+  border-left: 4px solid #2563eb;
+}
+
+.seat-passenger-badge h4 {
+  margin: 0 0 6px 0;
+  font-size: 15px;
+  color: #0f172a;
+}
+
+.seat-passenger-badge p {
+  margin: 3px 0;
+  font-size: 13px;
+  color: #475569;
+}

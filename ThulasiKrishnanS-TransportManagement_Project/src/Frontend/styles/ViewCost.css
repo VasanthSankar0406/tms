@@ -1,0 +1,166 @@
+/* ========================================
+   VIEW COST - MODERN TABLE DESIGN
+   ======================================== */
+
+.view-cost-master-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 40px 20px;
+}
+
+.view-cost-box-wrapper {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 50px 40px;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1), 0 10px 40px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 1600px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    animation: slideInUp 0.6s ease-out;
+}
+
+.view-cost-title {
+    color: #2d3748;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.5px;
+}
+
+.view-cost-filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-bottom: 40px;
+}
+
+.view-cost-filter-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.view-cost-filter-item label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 10px;
+    letter-spacing: 0.3px;
+}
+
+.view-cost-filter-item select,
+.view-cost-filter-item input {
+    padding: 14px 16px;
+    width: 250px;
+    height: 50px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 14px;
+    background: #f7fafc;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.view-cost-filter-item select:focus,
+.view-cost-filter-item input:focus {
+    outline: none;
+    border-color: #667eea;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15), 0 4px 12px rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+}
+
+.view-cost-search-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    border: none;
+    padding: 14px 28px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 50px;
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.view-cost-search-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: left 0.3s ease;
+}
+
+.view-cost-search-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+}
+
+.view-cost-search-button:hover::before {
+    left: 100%;
+}
+
+.view-cost-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: var(--text-base);
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    margin-top: var(--space-6);
+}
+
+.view-cost-table th,
+.view-cost-table td {
+    padding: var(--space-5);
+    text-align: center;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.view-cost-table thead {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
+    color: var(--white);
+}
+
+.view-cost-table th {
+    font-weight: var(--font-bold);
+    font-size: var(--text-lg);
+    text-transform: uppercase;
+}
+
+.view-cost-table tbody tr {
+    transition: all var(--transition-fast);
+}
+
+.view-cost-table tbody tr:nth-child(even) {
+    background: var(--gray-50);
+}
+
+.view-cost-table tbody tr:hover {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(102, 126, 234, 0.05));
+    transform: scale(1.01);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
