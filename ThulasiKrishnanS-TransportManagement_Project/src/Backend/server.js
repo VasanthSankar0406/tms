@@ -11,7 +11,17 @@ const deviceRoutes = require('./routes/device');
 const attendanceRoutes = require('./routes/attendance');
 const insuranceRoutes = require('./routes/insurance');
 const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '.env') });
+const fs = require('fs');
+
+const backendEnv = path.join(__dirname, '.env');
+const rootEnv = path.resolve(__dirname, '../../.env');
+if (fs.existsSync(backendEnv)) {
+    require('dotenv').config({ path: backendEnv });
+} else if (fs.existsSync(rootEnv)) {
+    require('dotenv').config({ path: rootEnv });
+} else {
+    require('dotenv').config();
+}
 
 const app = express();
 

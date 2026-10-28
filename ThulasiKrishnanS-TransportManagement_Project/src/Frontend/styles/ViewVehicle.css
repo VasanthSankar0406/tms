@@ -1,348 +1,1559 @@
-/* ========================================
-   VIEW VEHICLE - MODERN TABLE DESIGN
-   Professional Data Display
-   ======================================== */
+/* ==========================================================================
+   VIEW VEHICLE - MODERN ENTERPRISE FLEET MANAGEMENT STYLING
+   Unified Vehicle Master - Matches Consultancy Proposals Reference Pattern
+   ========================================================================== */
 
 .view-vehicle-master-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-height: calc(100vh - 80px);
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+  box-sizing: border-box !important;
 }
 
-.view-logout-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    color: #ffffff;
-    transition: all 0.3s ease;
-    padding: 8px;
-    border-radius: 8px;
-}
-
-.view-logout-btn:hover {
-    color: #00d4ff;
-    transform: scale(1.1);
-}
-
-/* Main Container */
+/* Card Box Wrapper */
 .view-vehicle-box-wrapper {
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 50px 40px;
-    border-radius: 16px;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1), 0 10px 40px rgba(0, 0, 0, 0.08);
-    width: 100%;
-    max-width: 1600px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    animation: slideInUp 0.6s ease-out;
+  background: #ffffff !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(15, 30, 50, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(9, 31, 55, 0.03) !important;
+  padding: 22px 24px 24px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* --------------------------------------------------------------------------
+   1. PAGE HEADER & ACTIONS (Matching Reference Screenshot Layout)
+   -------------------------------------------------------------------------- */
+.vm-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
 }
 
-/* Titles */
-.view-vehicle-main-title {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 15px;
-    text-align: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: 0.5px;
+.vm-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
-.view-vehicle-title {
-    color: #2d3748;
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 35px;
-    text-align: center;
-    text-transform: uppercase;
-    padding-bottom: 12px;
-    border-bottom: 3px solid;
-    border-image: linear-gradient(90deg, #667eea, #764ba2) 1;
-    letter-spacing: 0.3px;
-    position: relative;
+.vm-page-title {
+  margin: 0;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #0f2744;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
 }
 
-/* Filter Section */
-.view-filter-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 28px;
+.vm-page-subtitle {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 400;
+  line-height: 1.35;
 }
 
-.view-filter-item {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
+.vm-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.view-reg-no-container {
-    position: relative;
+/* Secondary Action: Generate Report (Matches 'Excel Bulk Upload' in Reference) */
+.vm-btn-secondary.vm-btn-report {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 16px;
+  background: #ffffff;
+  color: #1e3a8a;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.16s ease;
+  box-sizing: border-box;
 }
 
-.view-filter-item label {
-    font-size: 15px;
-    font-weight: 600;
-    color: #2d3748;
-    margin-bottom: 10px;
-    text-align: left;
-    letter-spacing: 0.3px;
+.vm-btn-secondary.vm-btn-report:hover:not(:disabled) {
+  background: #f8fafc;
+  border-color: #94a3b8;
+  color: #0f172a;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
 }
 
-/* Enhanced Inputs */
-.view-filter-item select,
-.view-filter-item input {
-    padding: var(--space-4);
-    width: 240px;
-    height: 50px;
-    border: 2px solid var(--gray-300);
-    border-radius: var(--radius-lg);
-    text-align: center;
-    font-size: var(--text-base);
-    background: var(--white);
-    color: var(--gray-800);
-    transition: all var(--transition-base);
-    box-shadow: var(--shadow-sm);
+.vm-btn-secondary.vm-btn-report:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
 }
 
-.view-filter-item select:focus,
-.view-filter-item input:focus {
-    outline: none;
-    border-color: var(--accent-cyan);
-    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1), var(--shadow-md);
-    transform: translateY(-2px);
+/* Primary Action: + Add Vehicle (Matches '+ Add New Consultancy' in Reference) */
+.vm-btn-primary.vm-btn-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 18px;
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.28);
+  box-sizing: border-box;
 }
 
-.view-filter-item select:hover,
-.view-filter-item input:hover {
-    border-color: var(--primary-blue);
+.vm-btn-primary.vm-btn-add:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.38);
+  filter: brightness(1.06);
 }
 
-/* Search Button */
-.view-search-button {
-    background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
-    color: var(--white);
-    border: none;
-    padding: var(--space-4) var(--space-8);
-    font-size: var(--text-lg);
-    font-weight: var(--font-bold);
-    cursor: pointer;
-    border-radius: var(--radius-lg);
-    transition: all var(--transition-base);
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-2);
-    box-shadow: var(--shadow-md);
-    position: relative;
-    overflow: hidden;
+.vm-btn-primary.vm-btn-add:active {
+  transform: translateY(0);
 }
 
-.view-search-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.5s;
+/* Subtle Divider */
+.fleet-subtle-divider {
+  width: 100%;
+  height: 1px;
+  background: #e2e8f0;
+  margin: 12px 0 16px 0;
 }
 
-.view-search-button:hover::before {
-    left: 100%;
+/* Alert Banners */
+.vm-alert {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+  animation: vmOverlayFadeIn 0.2s ease;
 }
 
-.view-search-button:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-xl);
+.vm-alert-success {
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
 }
 
-.view-search-button:active {
-    transform: translateY(-1px);
+.vm-alert-danger {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
 }
 
-/* Table Container */
+.vm-alert-close {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: 4px;
+}
+
+.vm-alert-close:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* --------------------------------------------------------------------------
+   2. RESPONSIVE FILTERS TOOLBAR
+   -------------------------------------------------------------------------- */
+.fleet-filter-toolbar {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 18px;
+  padding: 14px 18px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.fleet-filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+  min-width: 160px;
+  box-sizing: border-box;
+}
+
+.fleet-filter-field label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #334155;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.fleet-filter-select {
+  height: 38px;
+  width: 100%;
+  padding: 0 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #1e293b;
+  font-size: 0.84rem;
+  font-weight: 500;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.16s ease;
+  cursor: pointer;
+}
+
+.fleet-filter-select:focus {
+  border-color: #10385d;
+  box-shadow: 0 0 0 3px rgba(16, 56, 93, 0.12);
+}
+
+.fleet-filter-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.fleet-btn-reset-filters {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 16px;
+  background: #ffffff;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.16s ease;
+  white-space: nowrap;
+}
+
+.fleet-btn-reset-filters.active:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  color: #0f172a;
+  transform: translateY(-1px);
+}
+
+.fleet-btn-reset-filters:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  border-color: #e2e8f0;
+  background: #f8fafc;
+  color: #94a3b8;
+  transform: none;
+}
+
+/* --------------------------------------------------------------------------
+   3. VEHICLE DATA TABLE - ZERO DESKTOP HORIZONTAL OVERFLOW
+   Solid Royal Navy Header, Sort Indicators, Clean Rows & Subtle Hover
+   -------------------------------------------------------------------------- */
 .view-vehicle-table-container {
-    overflow-x: auto;
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-lg);
-    margin-top: var(--space-6);
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 10px !important;
+  background: #ffffff !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02) !important;
+  margin-top: 0 !important;
+  margin-bottom: 8px !important;
+  box-sizing: border-box !important;
+  -webkit-overflow-scrolling: touch !important;
 }
 
-/* Modern Table */
+.view-vehicle-table-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.view-vehicle-table-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
 .view-vehicle-table {
-    width: 100%;
-    min-width: 1200px; /* Ensure minimum width for proper scrolling */
-    border-collapse: separate;
-    border-spacing: 0;
-    font-size: var(--text-base);
-    background: var(--white);
-    border-radius: var(--radius-xl);
-    overflow: hidden;
+  width: 100% !important;
+  min-width: 100% !important;
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  font-size: 0.8rem !important;
+  background: #ffffff !important;
+  table-layout: auto !important;
+  box-sizing: border-box !important;
 }
 
-.view-vehicle-table th,
-.view-vehicle-table td {
-    padding: var(--space-5);
-    text-align: center;
-    border-bottom: 1px solid var(--gray-200);
-}
+/* Column Width Allocations */
+.col-sno { width: 36px; }
+.col-type { width: 72px; }
+.col-id { width: 56px; }
+.col-cap { width: 56px; }
+.col-avail { width: 58px; }
+.col-reg { width: 104px; }
+.col-route { width: 62px; }
+.col-date { width: 76px; }
+.col-rc { width: 70px; }
+.col-vendor { width: 78px; }
+.col-place { width: 84px; }
+.col-actions { width: 136px; }
 
-/* Table Header */
+/* Table Header (Matching Reference Solid Blue/Navy Style) */
 .view-vehicle-table thead {
-    background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
-    color: var(--white);
-    position: sticky;
-    top: 0;
-    z-index: 10;
+  background: #0f2744 !important;
+  color: #ffffff !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 4 !important;
 }
 
 .view-vehicle-table th {
-    font-weight: var(--font-bold);
-    font-size: var(--text-lg);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border-bottom: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 11px 4px !important;
+  font-weight: 700 !important;
+  font-size: 0.71rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.025em !important;
+  color: #ffffff !important;
+  background: #0f2744 !important;
+  border: none !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  white-space: normal !important;
+  line-height: 1.25 !important;
+  box-sizing: border-box !important;
 }
 
-/* Table Body */
+.view-vehicle-table th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.view-vehicle-table th:last-child {
+  border-top-right-radius: 8px;
+}
+
+
+/* Table Body Cells */
+.view-vehicle-table td {
+  padding: 9px 4px !important;
+  color: #1e293b !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  font-size: 0.79rem !important;
+  vertical-align: middle !important;
+  text-align: center !important;
+  line-height: 1.25 !important;
+  box-sizing: border-box !important;
+}
+
 .view-vehicle-table tbody tr {
-    transition: all var(--transition-fast);
-    background: var(--white);
+  background: #ffffff !important;
+  transition: background 0.12s ease !important;
 }
 
 .view-vehicle-table tbody tr:nth-child(even) {
-    background: var(--gray-50);
+  background: #f8fafc !important;
 }
 
 .view-vehicle-table tbody tr:hover {
-    background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(102, 126, 234, 0.05));
-    transform: scale(1.01);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background: #f0f7ff !important;
 }
 
-.view-vehicle-table td {
-    color: var(--gray-700);
-    font-size: var(--text-base);
+/* Cell-specific typography and wrapping rules */
+.col-sno-td {
+  font-weight: 600;
+  color: #64748b !important;
 }
 
-/* Report Button */
-.report-button {
-    background: linear-gradient(135deg, var(--success), #059669);
-    color: var(--white);
-    padding: var(--space-2) var(--space-5);
-    border: none;
-    border-radius: var(--radius-lg);
-    cursor: pointer;
-    font-weight: var(--font-semibold);
-    font-size: var(--text-sm);
-    transition: all var(--transition-base);
-    box-shadow: var(--shadow-sm);
+.fleet-id-text {
+  color: #0f2744;
+  font-weight: 700;
+  font-size: 0.8rem;
 }
 
-.report-button:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-    background: linear-gradient(135deg, #059669, var(--success));
+.fleet-type-pill {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-size: 0.71rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
-.report-button:active {
-    transform: translateY(0);
+.type-ac {
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
 }
 
-/* Empty State */
-.empty-state {
-    text-align: center;
-    padding: var(--space-12);
-    color: var(--gray-500);
+.type-non-ac {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
 }
 
-.empty-state-icon {
-    font-size: 4rem;
-    color: var(--gray-300);
-    margin-bottom: var(--space-4);
+.fleet-seats-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  background: #ecfdf5;
+  color: #047857;
+  font-weight: 700;
+  border-radius: 5px;
+  font-size: 0.78rem;
 }
 
-.empty-state-text {
-    font-size: var(--text-lg);
-    font-weight: var(--font-medium);
+.fleet-reg-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.76rem;
+  font-weight: 600;
+  background: #f1f5f9;
+  color: #0f2744;
+  padding: 2px 4px;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+  display: inline-block;
+  max-width: 100px;
+  word-break: break-all;
+  white-space: normal;
+  line-height: 1.15;
 }
 
-/* Responsive Design */
-@media (max-width: 1200px) {
-    .view-vehicle-box-wrapper {
-        padding: var(--space-6);
-    }
+.fleet-route-pill {
+  display: inline-block;
+  padding: 2px 6px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-weight: 700;
+  border-radius: 5px;
+  font-size: 0.76rem;
+  border: 1px solid #bfdbfe;
+}
 
-    .view-filter-container {
-        gap: var(--space-3);
-    }
+.fleet-unassigned {
+  color: #94a3b8;
+  font-style: italic;
+}
 
-    .view-vehicle-table-container {
-        margin-top: var(--space-4);
-    }
+.col-date-td {
+  font-size: 0.75rem !important;
+  color: #475569 !important;
+}
+
+.col-rc-td,
+.col-vendor-td,
+.col-place-td {
+  font-size: 0.75rem !important;
+  word-break: break-word;
+  white-space: normal;
+  max-width: 84px;
+}
+
+.fleet-table-loading,
+.fleet-table-empty {
+  padding: 36px 16px !important;
+  text-align: center !important;
+  color: #64748b !important;
+  font-size: 0.88rem !important;
+  font-weight: 500 !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. ACTIONS CELL - HORIZONTAL COMPACT BUTTONS
+   -------------------------------------------------------------------------- */
+.fleet-actions-cell {
+  padding: 6px 4px !important;
+}
+
+.fleet-action-buttons-group {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  flex-wrap: nowrap !important;
+  white-space: nowrap !important;
+}
+
+.fleet-action-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 3px !important;
+  height: 24px !important;
+  padding: 0 6px !important;
+  border-radius: 4px !important;
+  font-size: 0.71rem !important;
+  font-weight: 600 !important;
+  border: 1px solid transparent !important;
+  cursor: pointer !important;
+  transition: all 0.12s ease !important;
+  white-space: nowrap !important;
+  line-height: 1 !important;
+  box-sizing: border-box !important;
+}
+
+.fleet-action-view {
+  background: #f1f5f9 !important;
+  color: #0369a1 !important;
+  border-color: #cbd5e1 !important;
+}
+
+.fleet-action-view:hover {
+  background: #e0f2fe !important;
+  border-color: #7dd3fc !important;
+  color: #0284c7 !important;
+}
+
+.fleet-action-edit {
+  background: #fffbeb !important;
+  color: #b45309 !important;
+  border-color: #fde68a !important;
+}
+
+.fleet-action-edit:hover {
+  background: #fef3c7 !important;
+  border-color: #fcd34d !important;
+  color: #92400e !important;
+}
+
+.fleet-action-delete {
+  background: #fef2f2 !important;
+  color: #dc2626 !important;
+  border-color: #fecaca !important;
+}
+
+.fleet-action-delete:hover {
+  background: #fee2e2 !important;
+  border-color: #fca5a5 !important;
+  color: #b91c1c !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. TABLE FOOTER & PAGINATION (Matching Reference Screenshot)
+   -------------------------------------------------------------------------- */
+.vm-table-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 4px 6px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.vm-footer-entries {
+  font-size: 0.82rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.vm-pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.vm-page-btn {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #475569;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-sizing: border-box;
+}
+
+.vm-page-btn:hover:not(:disabled) {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
+.vm-page-btn.active {
+  background: #1e3a8a;
+  border-color: #1e3a8a;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(30, 58, 138, 0.2);
+}
+
+.vm-page-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  background: #f8fafc;
+}
+
+/* --------------------------------------------------------------------------
+   6. MODAL OVERLAY & ANIMATIONS (180–220ms Fade & Scale)
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.vm-modal-overlay {
+  animation: vmOverlayFadeIn 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes vmOverlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes vmModalScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Base Modal Box */
+.fleet-modal-box {
+  background: #ffffff;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.28);
+  border: 1px solid #e2e8f0;
+  padding: 24px;
+  box-sizing: border-box;
+  animation: vmModalScaleUp 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* --------------------------------------------------------------------------
+   7. REDESIGNED ADD VEHICLE MODAL - NON-SCROLLABLE DUAL COLUMNS LAYOUT
+   Fits standard desktop displays with ZERO vertical scrolling
+   -------------------------------------------------------------------------- */
+.vm-add-modal-box {
+  width: 95% !important;
+  max-width: 760px !important;
+  height: auto !important;
+  max-height: calc(100vh - 40px) !important;
+  overflow: visible !important;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 0 !important;
+  border-radius: 14px !important;
+  background: #ffffff !important;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.3) !important;
+  border: 1px solid #e2e8f0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Compact Modal Header */
+.vm-modal-header {
+  flex-shrink: 0;
+  padding: 13px 20px 11px !important;
+  border-bottom: 1px solid #e2e8f0;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  box-sizing: border-box;
+}
+
+.vm-modal-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.vm-modal-icon-badge {
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 8px !important;
+  background: #eff6ff;
+  color: #1e3a8a;
+  border: 1px solid #bfdbfe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.vm-modal-title {
+  margin: 0;
+  font-size: 1.12rem !important;
+  font-weight: 700;
+  color: #0f2744;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.vm-modal-subtitle {
+  margin: 2px 0 0 0 !important;
+  font-size: 0.77rem !important;
+  color: #64748b;
+  line-height: 1.25;
+}
+
+.vm-modal-close-btn {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.vm-modal-close-btn:hover:not(:disabled) {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.vm-modal-close-btn:focus-visible {
+  outline: 2px solid #1e3a8a;
+  outline-offset: 2px;
+}
+
+/* Form Wrapper - Non-Scrollable */
+.vm-modal-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+}
+
+/* Dual Column Layout (Side-by-Side Panels) */
+.vm-modal-dual-columns {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 16px;
+  padding: 13px 20px 10px;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.vm-column-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.vm-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 5px;
+  border-bottom: 1.5px solid #e2e8f0;
+  margin-bottom: 2px;
+}
+
+.vm-panel-icon {
+  color: #1e3a8a;
+  flex-shrink: 0;
+}
+
+.vm-panel-title {
+  margin: 0;
+  font-size: 0.81rem;
+  font-weight: 700;
+  color: #0f2744;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.vm-panel-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.vm-dual-columns-divider {
+  width: 1px;
+  align-self: stretch;
+  background: #e2e8f0;
+  margin: 0 2px;
+}
+
+/* Compact Field & Labels */
+.fleet-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fleet-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fleet-label-row label,
+.fleet-form-field label {
+  font-size: 0.74rem !important;
+  font-weight: 600 !important;
+  color: #334155 !important;
+  letter-spacing: 0.01em;
+  line-height: 1.2 !important;
+}
+
+.req-star {
+  color: #ef4444;
+  margin-left: 2px;
+  font-weight: bold;
+}
+
+/* Standardized Compact Inputs & Dropdowns */
+.fleet-form-field input,
+.fleet-form-field select {
+  height: 35px !important;
+  width: 100%;
+  padding: 0 10px !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 7px !important;
+  font-size: 0.81rem !important;
+  color: #1e293b !important;
+  background: #ffffff !important;
+  outline: none !important;
+  transition: all 0.16s ease !important;
+  box-sizing: border-box !important;
+  font-family: inherit;
+}
+
+.fleet-form-field input::placeholder {
+  color: #94a3b8;
+  font-size: 0.79rem;
+}
+
+.fleet-form-field input:hover,
+.fleet-form-field select:hover {
+  border-color: #94a3b8 !important;
+}
+
+.fleet-form-field input:focus,
+.fleet-form-field select:focus {
+  border-color: #1e3a8a !important;
+  box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.12) !important;
+}
+
+/* Dropdown Caret Styling */
+.fleet-form-field select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 13px 13px;
+  padding-right: 28px !important;
+}
+
+/* Inline Validation States */
+.input-has-error {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12) !important;
+}
+
+.vm-field-error-msg {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.69rem !important;
+  color: #ef4444;
+  font-weight: 500;
+  margin-top: 1px;
+  line-height: 1.1;
+}
+
+.input-disabled-readonly {
+  background: #f8fafc !important;
+  color: #64748b !important;
+  border-color: #e2e8f0 !important;
+  cursor: not-allowed !important;
+  font-weight: 600 !important;
+}
+
+.vm-field-badge {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #64748b;
+  background: #f1f5f9;
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+  margin-left: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Fixed Visually Distinct Modal Footer */
+.vm-modal-footer {
+  flex-shrink: 0;
+  padding: 12px 20px !important;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  box-sizing: border-box;
+}
+
+.vm-modal-footer-hint {
+  font-size: 0.74rem !important;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.vm-modal-footer-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+/* ==========================================================================
+   IDENTICAL SIZING FOR BOTH MODAL ACTION BUTTONS ("Cancel" & "Save Vehicle")
+   Enforces identical width, height, padding, font-size, border-radius, and alignment
+   ========================================================================== */
+.vm-modal-footer .vm-modal-footer-actions .vm-modal-cancel-btn,
+.vm-modal-footer .vm-modal-footer-actions .vm-modal-save-btn,
+.vm-modal-footer .vm-modal-cancel-btn,
+.vm-modal-footer .vm-modal-save-btn,
+.vm-modal-footer button.vm-modal-cancel-btn,
+.vm-modal-footer button.vm-modal-save-btn,
+.vm-modal-footer button[type="button"].vm-modal-cancel-btn,
+.vm-modal-footer button[type="submit"].vm-modal-save-btn,
+.modal-actions .cancel-btn,
+.modal-actions .save-btn,
+button.vm-modal-cancel-btn,
+button.vm-modal-save-btn {
+  height: 40px !important;
+  min-height: 40px !important;
+  max-height: 40px !important;
+  width: 140px !important;
+  min-width: 140px !important;
+  max-width: 140px !important;
+  padding: 0 16px !important;
+  border-radius: 8px !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 7px !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+  transition: all 0.16s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  line-height: 1 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  text-transform: none !important;
+  flex: none !important;
+}
+
+.vm-modal-footer .vm-modal-cancel-btn,
+.vm-modal-footer button.vm-modal-cancel-btn,
+.vm-modal-footer button[type="button"].vm-modal-cancel-btn,
+.modal-actions .cancel-btn,
+button.vm-modal-cancel-btn {
+  background: #ffffff !important;
+  color: #334155 !important;
+  border: 1.5px solid #cbd5e1 !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+}
+
+.vm-modal-footer .vm-modal-cancel-btn:hover:not(:disabled),
+.vm-modal-footer button.vm-modal-cancel-btn:hover:not(:disabled),
+.modal-actions .cancel-btn:hover:not(:disabled),
+button.vm-modal-cancel-btn:hover:not(:disabled) {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: #94a3b8 !important;
+  transform: translateY(-1px) !important;
+}
+
+.vm-modal-footer .vm-modal-save-btn,
+.vm-modal-footer button.vm-modal-save-btn,
+.vm-modal-footer button[type="submit"].vm-modal-save-btn,
+.modal-actions .save-btn,
+button.vm-modal-save-btn {
+  background: linear-gradient(135deg, #10385d 0%, #1f6c9c 100%) !important;
+  color: #ffffff !important;
+  border: 1.5px solid transparent !important;
+  box-shadow: 0 2px 6px rgba(16, 56, 93, 0.28) !important;
+}
+
+.vm-modal-footer .vm-modal-save-btn:hover:not(:disabled),
+.vm-modal-footer button.vm-modal-save-btn:hover:not(:disabled),
+.modal-actions .save-btn:hover:not(:disabled),
+button.vm-modal-save-btn:hover:not(:disabled) {
+  box-shadow: 0 4px 10px rgba(16, 56, 93, 0.38) !important;
+  filter: brightness(1.08) !important;
+  transform: translateY(-1px) !important;
+}
+
+.vm-modal-footer .vm-modal-save-btn:disabled,
+.vm-modal-footer .vm-modal-cancel-btn:disabled,
+.modal-actions .save-btn:disabled,
+.modal-actions .cancel-btn:disabled,
+button.vm-modal-save-btn:disabled,
+button.vm-modal-cancel-btn:disabled {
+  opacity: 0.65 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+.vm-spinner {
+  animation: vmSpin 1s linear infinite;
+}
+
+@keyframes vmSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. LEGACY MODAL STYLING (Edit & View Details Modals)
+   -------------------------------------------------------------------------- */
+.fleet-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.fleet-modal-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0f2744;
+}
+
+.fleet-modal-subtitle {
+  margin: 4px 0 0 0;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.fleet-modal-close {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fleet-modal-close:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.cancel-btn {
+  height: 36px;
+  padding: 0 16px;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cancel-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.save-btn {
+  height: 36px;
+  padding: 0 20px;
+  background: #10385d;
+  color: #ffffff;
+  border: none;
+  border-radius: 7px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 2px 6px rgba(16, 56, 93, 0.2);
+}
+
+.save-btn:hover:not(:disabled) {
+  background: #0b2742;
+  transform: translateY(-1px);
+}
+
+.save-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.fleet-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  background: #f8fafc;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.fleet-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fleet-detail-full {
+  grid-column: 1 / -1;
+}
+
+.fleet-detail-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748b;
+}
+
+.fleet-detail-value {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* --------------------------------------------------------------------------
+   9. RESPONSIVE BREAKPOINT & ACCESSIBILITY
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .view-vehicle-table {
+    min-width: 860px !important;
+  }
 }
 
 @media (max-width: 768px) {
-    .view-vehicle-main-title {
-        font-size: var(--text-2xl);
-    }
+  .view-vehicle-box-wrapper {
+    padding: 16px 14px !important;
+  }
 
-    .view-vehicle-title {
-        font-size: var(--text-xl);
-    }
+  .vm-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
 
-    .view-filter-item select,
-    .view-filter-item input {
-        width: 100%;
-        max-width: 200px;
-    }
+  .vm-header-actions {
+    width: 100%;
+    justify-content: stretch;
+  }
 
-    .view-search-button {
-        width: 100%;
-        max-width: 200px;
-    }
+  .vm-btn-secondary.vm-btn-report,
+  .vm-btn-primary.vm-btn-add {
+    flex: 1;
+    justify-content: center;
+  }
 
-    .view-vehicle-table {
-        font-size: var(--text-sm);
-        min-width: 1000px; /* Adjusted for mobile */
-    }
+  .fleet-filter-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
 
-    .view-vehicle-table th,
-    .view-vehicle-table td {
-        padding: var(--space-2);
-        white-space: nowrap;
-    }
+  .fleet-filter-field {
+    width: 100%;
+    min-width: 100%;
+  }
 
-    .view-vehicle-table-container {
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: thin;
-    }
+  .fleet-filter-actions-group {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .fleet-btn-reset-filters {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .fleet-details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile Layout for Add Vehicle Modal */
+@media (max-width: 640px) {
+  .vm-add-modal-box {
+    width: 98% !important;
+    max-height: 94vh !important;
+    overflow-y: auto !important;
+    border-radius: 12px !important;
+  }
+
+  .vm-modal-header {
+    padding: 12px 14px !important;
+  }
+
+  .vm-modal-icon-badge {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .vm-modal-title {
+    font-size: 1.05rem !important;
+  }
+
+  .vm-modal-dual-columns {
+    flex-direction: column !important;
+    gap: 12px !important;
+    padding: 12px 14px !important;
+  }
+
+  .vm-dual-columns-divider {
+    width: 100% !important;
+    height: 1px !important;
+    margin: 2px 0 !important;
+  }
+
+  .vm-modal-footer {
+    padding: 10px 14px !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+  }
+
+  .vm-modal-footer-hint {
+    text-align: center !important;
+  }
+
+  .vm-modal-footer-actions {
+    width: 100% !important;
+    justify-content: stretch !important;
+  }
+
+  .vm-modal-cancel-btn,
+  .vm-modal-save-btn,
+  .modal-actions .cancel-btn,
+  .modal-actions .save-btn {
+    flex: 1 1 50% !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    justify-content: center !important;
+  }
+}
+
+/* ==========================================================================
+   9. FLASH CARD NOTIFICATION (3-Second Auto-Dismissing Floating Card)
+   ========================================================================== */
+.vm-flash-card {
+  position: fixed;
+  top: 24px;
+  right: 28px;
+  z-index: 100000;
+  width: 90%;
+  max-width: 380px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px -8px rgba(15, 23, 42, 0.22), 0 0 0 1px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+  animation: vmFlashSlideDown 280ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: auto;
+}
+
+@keyframes vmFlashSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.vm-flash-card-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px 12px 14px;
+}
+
+.vm-flash-card-badge {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.vm-flash-card-success .vm-flash-card-badge {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+.vm-flash-card-danger .vm-flash-card-badge {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.vm-flash-card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.vm-flash-card-title {
+  margin: 0 0 2px 0;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.25;
+}
+
+.vm-flash-card-message {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #475569;
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+.vm-flash-card-close {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.vm-flash-card-close:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+/* 3-Second Progress Bar */
+.vm-flash-card-progress {
+  width: 100%;
+  height: 3px;
+  background: #f1f5f9;
+  overflow: hidden;
+}
+
+.vm-flash-card-success .vm-flash-card-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981, #059669);
+  animation: vmFlashProgress 3s linear forwards;
+}
+
+.vm-flash-card-danger .vm-flash-card-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #f87171, #dc2626);
+  animation: vmFlashProgress 3s linear forwards;
+}
+
+@keyframes vmFlashProgress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+/* ==========================================================================
+   10. DELETE VEHICLE CONFIRMATION MODAL
+   ========================================================================== */
+.vm-delete-modal-box {
+  width: 95% !important;
+  max-width: 460px !important;
+  background: #ffffff !important;
+  border-radius: 14px !important;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.3) !important;
+  border: 1px solid #e2e8f0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  animation: vmModalScaleUp 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+.vm-delete-modal-header {
+  padding: 22px 24px 18px !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+  background: #ffffff !important;
+}
+
+.vm-delete-icon-badge {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 12px !important;
+  background: #fef2f2 !important;
+  color: #dc2626 !important;
+  border: 1px solid #fee2e2 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+.vm-delete-modal-text {
+  flex: 1 !important;
+}
+
+.vm-delete-modal-title {
+  margin: 0 0 6px 0 !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  color: #0f2744 !important;
+}
+
+.vm-delete-modal-desc {
+  margin: 0 !important;
+  font-size: 0.85rem !important;
+  color: #64748b !important;
+  line-height: 1.45 !important;
+}
+
+.vm-btn-danger-confirm {
+  height: 40px !important;
+  min-height: 40px !important;
+  max-height: 40px !important;
+  width: 140px !important;
+  min-width: 140px !important;
+  max-width: 140px !important;
+  padding: 0 16px !important;
+  border-radius: 8px !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 7px !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+  transition: all 0.16s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  line-height: 1 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  text-transform: none !important;
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
+  color: #ffffff !important;
+  border: 1.5px solid transparent !important;
+  box-shadow: 0 2px 6px rgba(220, 38, 38, 0.28) !important;
+}
+
+.vm-btn-danger-confirm:hover:not(:disabled) {
+  box-shadow: 0 4px 10px rgba(220, 38, 38, 0.38) !important;
+  filter: brightness(1.08) !important;
+  transform: translateY(-1px) !important;
+}
+
+.vm-btn-danger-confirm:disabled {
+  opacity: 0.65 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  .modal-overlay,
+  .vm-modal-overlay,
+  .vm-add-modal-box,
+  .fleet-modal-box {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .vm-spinner {
+    animation-duration: 2s !important;
+  }
 }

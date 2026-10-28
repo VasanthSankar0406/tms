@@ -1,14 +1,8 @@
-import React, { useState, useEffect} from "react";
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../../../styles/AddFC.css";
 
 const AddFC = () => {
-  const navigate = useNavigate();
-
-  const handleNavigation = (path) => {
-    navigate(path);
-  };
 
   const [formData, setFormData] = useState({
     vehicleId: "",
@@ -74,6 +68,7 @@ const AddFC = () => {
       <div className="fc-form-container">
         <div className="fc-form">
           <h2 className="fc-title">FC Details Form</h2>
+          {error && <p className="error-message" style={{ color: "red" }}>{error}</p>}
           <form className="fc-form-grid" onSubmit={handleSubmit}>
             <div className="fc-form-group">
               <label>Vehicle Id</label>

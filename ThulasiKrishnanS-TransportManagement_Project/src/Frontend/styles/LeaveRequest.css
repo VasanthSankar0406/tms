@@ -1,302 +1,368 @@
-.leave-request-container {
-  min-height: 100vh;
-  padding: 32px 20px 48px;
-  background: linear-gradient(180deg, rgba(243, 247, 251, 0.88), rgba(232, 238, 245, 0.92));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* ==========================================================================
+   LEAVE REQUEST - UNIFIED MASTER PORTAL THEME
+   Reusing exact theme, colour palette, and styling from Driver & Traveller Master
+   ========================================================================== */
+
+.leave-master-container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+  box-sizing: border-box !important;
 }
 
-.back-btn {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  display: inline-flex;
+.leave-box-wrapper {
+  background: #ffffff !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(15, 30, 50, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(9, 31, 55, 0.03) !important;
+  padding: 22px 24px 24px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.leave-loading-screen {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  border: 1px solid #d4e0ea;
-  border-radius: 12px;
+  min-height: 300px;
+  gap: 12px;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+/* --------------------------------------------------------------------------
+   1. LEAVE REQUESTS RESPONSIVE CARD GRID
+   -------------------------------------------------------------------------- */
+.leave-requests-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.leave-card {
   background: #ffffff;
-  color: #143e66;
-  cursor: pointer;
-  box-shadow: 0 10px 24px rgba(11, 30, 52, 0.1);
-  z-index: 5;
-}
-
-.back-btn:hover {
-  background: #f3f8fc;
-}
-
-.leave-request-container h1 {
-  margin: 0 0 18px;
-  color: #10243a;
-  font-size: clamp(1.5rem, 2.2vw, 2.1rem);
-  text-align: center;
-}
-
-.leave-form-container {
-  width: 100%;
-  max-width: 760px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  overflow: hidden;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
 }
 
-.leave-form-card,
-.leave-request-card,
-.no-requests,
-.error,
-.driver-leave-history {
-  width: 100%;
-  padding: 24px 26px;
-  border: 1px solid rgba(9, 31, 55, 0.08);
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 18px 40px rgba(11, 30, 52, 0.08);
+.leave-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+  border-color: #cbd5e1;
 }
 
-.leave-form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.form-group label {
-  font-weight: 700;
-  color: #314b64;
+.leave-card-header {
   display: flex;
   align-items: center;
-  gap: 8px;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
+  justify-content: space-between;
   padding: 14px 16px;
-  border: 1px solid #cad8e5;
-  border-radius: 14px;
-  background: #fbfdff;
-  color: #10243a;
-  font-size: 0.96rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  border-bottom: 1px solid #f1f5f9;
+  background: #fbfcfd;
 }
 
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-  outline: none;
-  border-color: #2c648f;
-  box-shadow: 0 0 0 4px rgba(44, 100, 143, 0.12);
-  background: #ffffff;
-}
-
-.leave-summary {
-  padding: 16px;
-  border: 1px solid #dbe7f0;
-  border-radius: 16px;
-  background: #f4f8fb;
-}
-
-.submit-btn,
-.history-toggle-btn,
-.approve-btn,
-.reject-btn {
-  border: none;
-  border-radius: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.submit-btn,
-.history-toggle-btn {
-  padding: 15px 18px;
-}
-
-.submit-btn,
-.history-toggle-btn,
-.approve-btn {
-  background: linear-gradient(90deg, #10385d, #1d6a9a);
-  color: #ffffff;
-}
-
-.reject-btn {
-  background: linear-gradient(90deg, #8d2b2b, #b44949);
-  color: #ffffff;
-}
-
-.submit-btn:hover:not(:disabled),
-.history-toggle-btn:hover,
-.approve-btn:hover,
-.reject-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 16px 30px rgba(16, 56, 93, 0.18);
-}
-
-.submit-btn:disabled {
-  background: #9aaaba;
-  cursor: not-allowed;
-  box-shadow: none;
-}
-
-.message {
-  padding: 12px 14px;
-  border-radius: 12px;
-  font-weight: 600;
-  text-align: center;
-}
-
-.message.success {
-  background: #edf8f0;
-  color: #21643a;
-  border: 1px solid #cfe8d6;
-}
-
-.message.error {
-  background: #fff1f1;
-  color: #b42318;
-  border: 1px solid #f2caca;
-}
-
-.driver-leave-history h3 {
-  margin: 0 0 16px;
-  color: #10243a;
+.leave-driver-info {
   display: flex;
   align-items: center;
   gap: 10px;
+  overflow: hidden;
 }
 
-.history-table {
-  width: 100%;
-  border-collapse: collapse;
+.leave-driver-badge {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: #eff6ff;
+  color: #1e40af;
+  border: 1px solid #dbeafe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.history-table th,
-.history-table td {
-  padding: 12px 10px;
-  border-bottom: 1px solid #e4edf4;
-  text-align: left;
+.leave-driver-name {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #0f2744;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.history-table th {
-  color: #143e66;
-  font-size: 0.86rem;
+.leave-staff-code {
+  font-size: 0.74rem;
+  color: #64748b;
+  font-family: monospace;
+  font-weight: 600;
+  display: block;
+}
+
+/* Status Badges */
+.leave-status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.request-header {
+.leave-status-badge.status-pending {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #b45309;
+}
+
+.leave-status-badge.status-approved {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #15803d;
+}
+
+.leave-status-badge.status-rejected {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+}
+
+/* Card Body */
+.leave-card-body {
+  padding: 14px 16px;
   display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-
-.request-header h3 {
-  margin: 0;
-  color: #10243a;
-}
-
-.request-details p {
-  margin-bottom: 8px;
-  color: #5b6f82;
-}
-
-.request-details strong {
-  color: #10243a;
-}
-
-.leave-requests-list {
-  width: 100%;
-  max-width: 1240px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 18px;
-}
-
-.request-actions {
-  display: flex;
+  flex-direction: column;
   gap: 10px;
-  margin-top: 18px;
-}
-
-.approve-btn,
-.reject-btn {
   flex: 1;
-  padding: 12px 14px;
 }
 
-.status {
+.leave-meta-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.leave-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.8rem;
+  color: #334155;
+}
+
+.meta-icon {
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+.vehicle-tag {
+  background: #eff6ff;
+  color: #1e40af;
+  font-weight: 700;
+  font-size: 0.72rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid #dbeafe;
+}
+
+.unassigned-tag {
+  color: #94a3b8;
+  font-style: italic;
+  font-size: 0.76rem;
+}
+
+.leave-reason-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 9px 12px;
+}
+
+.reason-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.reason-text {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #1e293b;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.leave-timestamp-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  color: #94a3b8;
+  margin-top: auto;
+}
+
+/* Card Actions */
+.leave-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-top: 1px solid #f1f5f9;
+  background: #fbfcfd;
+}
+
+.leave-btn-approve {
+  flex: 1;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 6px;
+  border: 1.5px solid #15803d;
+  background: #15803d;
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 12px;
-  border-radius: 999px;
+  gap: 5px;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 3px rgba(21, 128, 61, 0.2);
+}
+
+.leave-btn-approve:hover {
+  background: #166534;
+  border-color: #166534;
+  transform: translateY(-1px);
+}
+
+.leave-btn-reject {
+  flex: 1;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 6px;
+  border: 1.5px solid #dc2626;
+  background: #ffffff;
+  color: #dc2626;
   font-size: 0.78rem;
   font-weight: 700;
-  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: all 0.15s ease;
 }
 
-.status-pending {
-  background: #fff4db;
-  color: #8b5a00;
+.leave-btn-reject:hover {
+  background: #fef2f2;
+  border-color: #b91c1c;
+  color: #b91c1c;
+  transform: translateY(-1px);
 }
 
-.status-approved,
-.status-resolved {
-  background: #eaf7ee;
-  color: #21643a;
-}
-
-.status-rejected {
-  background: #fff1f1;
-  color: #b42318;
-}
-
-.loading,
-.error,
-.no-requests {
+/* Empty State */
+.leave-empty-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 10px;
+  background: #f8fafc;
+  margin-bottom: 20px;
   text-align: center;
-  color: #5a6d80;
+}
+
+/* --------------------------------------------------------------------------
+   2. DRIVER SUBMISSION MODE STYLING
+   -------------------------------------------------------------------------- */
+.driver-submit-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+}
+
+.driver-leave-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.leave-duration-preview {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 7px;
+  color: #1e40af;
+  font-size: 0.82rem;
+}
+
+.leave-validation-alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 7px;
+  color: #dc2626;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   3. RESPONSIVE OPTIMIZATIONS
+   -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .leave-requests-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
-  .leave-request-container {
-    padding: 20px 14px 32px;
+  .leave-box-wrapper {
+    padding: 16px !important;
   }
 
-  .leave-form-card,
-  .leave-request-card,
-  .no-requests,
-  .error,
-  .driver-leave-history {
-    padding: 20px;
-  }
-
-  .leave-requests-list {
+  .leave-requests-grid {
     grid-template-columns: 1fr;
   }
 
-  .back-btn {
-    top: 12px;
-    left: 12px;
-  }
-
-  .request-header,
-  .request-actions {
-    flex-direction: column;
-  }
-
-  .history-table {
-    display: block;
-    overflow-x: auto;
+  .form-grid-2 {
+    grid-template-columns: 1fr;
   }
 }

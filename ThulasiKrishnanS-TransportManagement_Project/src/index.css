@@ -1,3 +1,5 @@
+@import './Frontend/styles/TabTheme.css';
+
 :root {
   --white: #ffffff;
   --black: #000000;

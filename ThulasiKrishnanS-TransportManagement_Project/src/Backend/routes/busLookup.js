@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { listRecords, getRecord, saveRecord, updateRecord, saveNotification } = require('../dbRecords');
+const { listRecords, getRecord, saveRecord, updateRecord, deleteRecord, saveNotification } = require('../dbRecords');
 
 const normalize = (value) => String(value || '').trim().toLowerCase();
 const like = (value) => `%${String(value || '').trim()}%`;
@@ -168,6 +168,14 @@ router.put('/api/maintenance/:id', async (req, res) => {
     } catch (error) { fail(res, error); }
 });
 
+router.delete('/api/maintenance/:id', async (req, res) => {
+    try {
+        const deleted = await deleteRecord(req.app.locals.connection, 'maintenance', req.params.id);
+        if (!deleted) return res.status(404).json({ success: false, message: 'Maintenance record not found' });
+        res.json({ success: true, message: 'Maintenance record deleted successfully!' });
+    } catch (error) { fail(res, error); }
+});
+
 router.get('/api/capacity-management', async (req, res) => {
     try {
         const [rows] = await req.app.locals.connection.promise().query(
@@ -214,15 +222,33 @@ router.post('/api/breakdown-replacement', async (req, res) => {
             await saveRecord(connection, 'vehicle_status', spare.vehicleid, { vehicleid: spare.vehicleid, status: 'In Service (Replacement)' });
             const message = `Bus ${brokenBus.vehicleid} (${brokenBus.registrationno}) on route ${brokenBus.routeid || 'N/A'} reported a breakdown (${reason || 'Technical issue'}). Replacement bus ${spare.vehicleid} (${spare.registrationno}) is assigned.`;
             const notification = await saveRecord(connection, 'bus_change_notification', `change-${Date.now()}`, {
-                routeid: brokenBus.routeid, old_vehicleid: `${brokenBus.vehicleid} (${brokenBus.registrationno})`,
-                new_vehicleid: `${spare.vehicleid} (${spare.registrationno})`, reason: reason || 'Vehicle Breakdown',
-                message, effective_date: new Date().toISOString().slice(0, 10), created_at: new Date().toISOString()
+                broken_vehicleid: String(brokenBus.vehicleid),
+                broken_reg: brokenBus.registrationno,
+                routeid: brokenBus.routeid,
+                routename: routes[0]?.routename || `Route ${brokenBus.routeid || 'N/A'}`,
+                old_vehicleid: `${brokenBus.vehicleid} (${brokenBus.registrationno})`,
+                replacement_vehicleid: String(spare.vehicleid),
+                replacement_reg: spare.registrationno,
+                new_vehicleid: `${spare.vehicleid} (${spare.registrationno})`,
+                reason: reason || 'Vehicle Breakdown',
+                message,
+                effective_date: new Date().toISOString().slice(0, 10),
+                created_at: new Date().toISOString(),
+                status: 'Active Breakdown',
+                dispatch_status: 'Dispatched',
+                notification_status: 'Sent (SMS & Email)',
+                affectedPassengersCount: travellers.length
             });
             for (const passenger of travellers) {
                 await saveNotification(connection, {
-                    recipient: `${passenger.name} (${passenger.phoneno || passenger.rollno})`, channel: 'Email & SMS',
-                    subject: `Bus replacement notice - route ${brokenBus.routeid || 'N/A'}`, message, status: 'Queued',
-                    sent_at: new Date().toISOString()
+                    recipient: `${passenger.name} (${passenger.phoneno || passenger.rollno})`,
+                    channel: 'Email & SMS',
+                    subject: `Bus replacement notice - route ${brokenBus.routeid || 'N/A'}`,
+                    message,
+                    status: 'Queued',
+                    sent_at: new Date().toISOString(),
+                    vehicle_ref: `Bus #${brokenBus.vehicleid} ➔ #${spare.vehicleid}`,
+                    routeid: brokenBus.routeid
                 });
             }
             await connection.promise().commit();
@@ -231,6 +257,50 @@ router.post('/api/breakdown-replacement', async (req, res) => {
             await connection.promise().rollback();
             throw error;
         }
+    } catch (error) { fail(res, error); }
+});
+
+router.get('/api/notifications/bus-change', async (req, res) => {
+    try {
+        const changes = await listRecords(req.app.locals.connection, 'bus_change_notification');
+        res.json({ success: true, count: changes.length, notifications: changes });
+    } catch (error) { fail(res, error); }
+});
+
+router.get('/api/breakdown-history', async (req, res) => {
+    try {
+        const changes = await listRecords(req.app.locals.connection, 'bus_change_notification');
+        res.json({ success: true, count: changes.length, breakdowns: changes });
+    } catch (error) { fail(res, error); }
+});
+
+router.put('/api/breakdown-history/:id', async (req, res) => {
+    try {
+        const connection = req.app.locals.connection.promise();
+        const [rows] = await connection.query('SELECT payload FROM app_records WHERE id = ? AND record_type = ?', [req.params.id, 'bus_change_notification']);
+        if (!rows.length) return res.status(404).json({ success: false, message: 'Breakdown record not found' });
+        const payload = typeof rows[0].payload === 'string' ? JSON.parse(rows[0].payload) : rows[0].payload;
+        const updated = { ...payload, ...req.body };
+        await updateRecord(req.app.locals.connection, 'bus_change_notification', req.params.id, updated);
+        if (req.body.status === 'Resolved' && payload.broken_vehicleid) {
+            await saveRecord(req.app.locals.connection, 'vehicle_status', payload.broken_vehicleid, { vehicleid: payload.broken_vehicleid, status: 'Active' });
+        }
+        res.json({ success: true, message: 'Breakdown record updated successfully!', record: { ...updated, id: Number(req.params.id) } });
+    } catch (error) { fail(res, error); }
+});
+
+router.delete('/api/breakdown-history/:id', async (req, res) => {
+    try {
+        const deleted = await deleteRecord(req.app.locals.connection, 'bus_change_notification', req.params.id);
+        if (!deleted) return res.status(404).json({ success: false, message: 'Breakdown record not found' });
+        res.json({ success: true, message: 'Breakdown record deleted successfully!' });
+    } catch (error) { fail(res, error); }
+});
+
+router.get('/api/dispatch-logs', async (req, res) => {
+    try {
+        const notices = await listRecords(req.app.locals.connection, 'notification');
+        res.json({ success: true, count: notices.length, logs: notices });
     } catch (error) { fail(res, error); }
 });
 
@@ -252,7 +322,81 @@ router.post('/api/dispatch-notifications', async (req, res) => {
 
 router.get('/api/complaints', async (req, res) => {
     try {
-        const complaints = await listRecords(req.app.locals.connection, 'complaint');
+        let complaints = await listRecords(req.app.locals.connection, 'complaint');
+        if (!complaints.length) {
+            const seedComplaints = [
+                {
+                    user_name: 'Kani',
+                    rollno: '2312043',
+                    role: 'Student',
+                    category: 'AC & Ventilation',
+                    subject: 'AC cooling sluggish during afternoon return',
+                    description: 'The air conditioning unit in Bus #1 requires cooling coil inspection. Airflow was weak during the 4:30 PM return trip.',
+                    status: 'Pending',
+                    admin_response: '',
+                    submitted_at: '2026-10-24T16:45:00.000Z'
+                },
+                {
+                    user_name: 'Dr. S. Sundararajan',
+                    rollno: 'EMP-1042',
+                    role: 'Staff',
+                    category: 'Schedule & Delay',
+                    subject: 'Morning pickup delay at Kovilpatti Old Bus Stand',
+                    description: 'Bus #3 arrived 15 minutes late at Kovilpatti Old Bus Stand stop due to unexpected traffic near railway gate.',
+                    status: 'In Progress',
+                    admin_response: 'Driver advised to start 10 minutes earlier from the depot to bypass railway crossing congestion.',
+                    submitted_at: '2026-10-25T08:30:00.000Z'
+                },
+                {
+                    user_name: 'Ram',
+                    rollno: '2312063',
+                    role: 'Student',
+                    category: 'Seat & Upholstery',
+                    subject: 'Damaged armrest on Seat 14',
+                    description: 'Seat 14 right-side armrest is loose and requires screw tightening.',
+                    status: 'Resolved',
+                    admin_response: 'Work order assigned to maintenance depot. Armrest repaired and inspected.',
+                    submitted_at: '2026-10-23T11:20:00.000Z'
+                },
+                {
+                    user_name: 'Krish',
+                    rollno: '2313010',
+                    role: 'Student',
+                    category: 'Driver Behavior',
+                    subject: 'Appreciation for punctual departure and smooth driving',
+                    description: 'Driver Mr. Samy was very patient and ensured all students boarded safely during heavy rain.',
+                    status: 'Resolved',
+                    admin_response: 'Commendation noted in driver service record. Thank you for the positive feedback.',
+                    submitted_at: '2026-10-22T17:15:00.000Z'
+                },
+                {
+                    user_name: 'Vasanth',
+                    rollno: '2312044',
+                    role: 'Student',
+                    category: 'Safety & Speeding',
+                    subject: 'Speed sensor warning on NH44 stretch',
+                    description: 'Bus exceeded 60 km/h briefly near Sattur toll gate. Kindly review GPS telemetry speed limits.',
+                    status: 'In Progress',
+                    admin_response: 'Speed governor telemetry reviewed with fleet manager. Driver cautioned.',
+                    submitted_at: '2026-10-26T09:10:00.000Z'
+                },
+                {
+                    user_name: 'Prof. M. Meenakshi',
+                    rollno: 'EMP-2105',
+                    role: 'Staff',
+                    category: 'General Suggestion',
+                    subject: 'Request for additional evening departure at 6:15 PM',
+                    description: 'Many lab and project students remain on campus till 6:00 PM. A late evening shuttle to Kovilpatti would be helpful.',
+                    status: 'Pending',
+                    admin_response: '',
+                    submitted_at: '2026-10-27T10:05:00.000Z'
+                }
+            ];
+            for (const item of seedComplaints) {
+                await saveRecord(req.app.locals.connection, 'complaint', `complaint-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`, item);
+            }
+            complaints = await listRecords(req.app.locals.connection, 'complaint');
+        }
         res.json({ success: true, count: complaints.length, complaints });
     } catch (error) { fail(res, error); }
 });
@@ -280,6 +424,14 @@ router.put('/api/complaints/:id', async (req, res) => {
         const updated = { ...payload, ...(req.body.status !== undefined ? { status: req.body.status } : {}), ...(req.body.admin_response !== undefined ? { admin_response: req.body.admin_response } : {}) };
         await updateRecord(req.app.locals.connection, 'complaint', req.params.id, updated);
         res.json({ success: true, message: 'Complaint status updated successfully!', complaint: { ...updated, id: Number(req.params.id) } });
+    } catch (error) { fail(res, error); }
+});
+
+router.delete('/api/complaints/:id', async (req, res) => {
+    try {
+        const deleted = await deleteRecord(req.app.locals.connection, 'complaint', req.params.id);
+        if (!deleted) return res.status(404).json({ success: false, message: 'Complaint record not found' });
+        res.json({ success: true, message: 'Complaint record deleted successfully!' });
     } catch (error) { fail(res, error); }
 });
 

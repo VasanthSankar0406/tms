@@ -1,5 +1,16 @@
 const mysql = require('mysql2');
-require('dotenv').config();
+const path = require('path');
+const fs = require('fs');
+
+const backendEnv = path.join(__dirname, '.env');
+const rootEnv = path.resolve(__dirname, '../../.env');
+if (fs.existsSync(backendEnv)) {
+    require('dotenv').config({ path: backendEnv });
+} else if (fs.existsSync(rootEnv)) {
+    require('dotenv').config({ path: rootEnv });
+} else {
+    require('dotenv').config();
+}
 
 // Main database connection
 const connection = mysql.createConnection({

@@ -1,166 +1,251 @@
-/* ========================================
-   VIEW COST - MODERN TABLE DESIGN
-   ======================================== */
+/* ==========================================================================
+   VIEW COST - MODERN ENTERPRISE COST DETAILS STYLING
+   Unified Route Costing & Stage Fee Portal - Matches Master Page Design System
+   ========================================================================== */
 
+/* Outer Master Container */
 .view-cost-master-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-height: calc(100vh - 80px);
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    padding: 40px 20px;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+  box-sizing: border-box !important;
 }
 
+/* Card Box Wrapper */
 .view-cost-box-wrapper {
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 50px 40px;
-    border-radius: 16px;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1), 0 10px 40px rgba(0, 0, 0, 0.08);
-    width: 100%;
-    max-width: 1600px;
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    animation: slideInUp 0.6s ease-out;
+  background: #ffffff !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(15, 30, 50, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(9, 31, 55, 0.03) !important;
+  padding: 22px 24px 24px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
-.view-cost-title {
-    color: #2d3748;
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 40px;
-    text-transform: uppercase;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: 0.5px;
+/* Header Action Layout for Cost Details */
+.cost-header-actions-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 14px !important;
+  flex-wrap: wrap !important;
+  margin-top: 14px !important;
+  margin-bottom: 16px !important;
+  padding-bottom: 14px !important;
+  border-bottom: 1px solid #f1f5f9 !important;
 }
 
-.view-cost-filter-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 28px;
-    margin-bottom: 40px;
+.cost-header-left-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
 }
 
-.view-cost-filter-item {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+.cost-header-right-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
 }
 
-.view-cost-filter-item label {
-    font-size: 14px;
-    font-weight: 600;
-    color: #2d3748;
-    margin-bottom: 10px;
-    letter-spacing: 0.3px;
+/* Secondary Portal Button */
+.cost-btn-portal {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  height: 38px !important;
+  padding: 0 16px !important;
+  background: #eff6ff !important;
+  color: #1d4ed8 !important;
+  border: 1.5px solid #bfdbfe !important;
+  border-radius: 8px !important;
+  font-size: 0.84rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.16s ease !important;
+  box-sizing: border-box !important;
 }
 
-.view-cost-filter-item select,
-.view-cost-filter-item input {
-    padding: 14px 16px;
-    width: 250px;
-    height: 50px;
-    border: 2px solid #e2e8f0;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 14px;
-    background: #f7fafc;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+.cost-btn-portal:hover {
+  background: #dbeafe !important;
+  border-color: #93c5fd !important;
+  color: #1e40af !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 6px rgba(29, 78, 216, 0.12) !important;
 }
 
-.view-cost-filter-item select:focus,
-.view-cost-filter-item input:focus {
-    outline: none;
-    border-color: #667eea;
-    background: #ffffff;
-    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15), 0 4px 12px rgba(102, 126, 234, 0.2);
-    transform: translateY(-2px);
+/* --------------------------------------------------------------------------
+   1. TABLE CONTAINER & COST TABLE (Zero Desktop Horizontal Scrolling)
+   Solid Navy Header, Clean Rows, Compact Padding & Subtle Hover
+   -------------------------------------------------------------------------- */
+.view-cost-table-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 10px !important;
+  background: #ffffff !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02) !important;
+  margin-top: 0 !important;
+  margin-bottom: 8px !important;
+  box-sizing: border-box !important;
+  -webkit-overflow-scrolling: touch !important;
 }
 
-.view-cost-search-button {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: #ffffff;
-    border: none;
-    padding: 14px 28px;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    border-radius: 10px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    height: 50px;
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-    position: relative;
-    overflow: hidden;
+.view-cost-table-container::-webkit-scrollbar {
+  height: 6px;
 }
 
-.view-cost-search-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    transition: left 0.3s ease;
-}
-
-.view-cost-search-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
-}
-
-.view-cost-search-button:hover::before {
-    left: 100%;
+.view-cost-table-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
 }
 
 .view-cost-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    font-size: var(--text-base);
-    background: var(--white);
-    border-radius: var(--radius-xl);
-    overflow: hidden;
-    margin-top: var(--space-6);
+  width: 100% !important;
+  min-width: 100% !important;
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  font-size: 0.81rem !important;
+  background: #ffffff !important;
+  table-layout: auto !important;
+  box-sizing: border-box !important;
 }
 
-.view-cost-table th,
-.view-cost-table td {
-    padding: var(--space-5);
-    text-align: center;
-    border-bottom: 1px solid var(--gray-200);
+/* Column Width Allocations for Cost Details */
+.col-cost-sno {
+  width: 60px;
+}
+.col-cost-routeid {
+  width: 130px;
+}
+.col-cost-routename {
+  width: 240px;
+}
+.col-cost-stagename {
+  width: 260px;
+}
+.col-cost-fee {
+  width: 160px;
 }
 
+/* Table Header (Solid Royal Navy matching Vehicle Master) */
 .view-cost-table thead {
-    background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
-    color: var(--white);
+  background: #0f2744 !important;
+  color: #ffffff !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 4 !important;
 }
 
 .view-cost-table th {
-    font-weight: var(--font-bold);
-    font-size: var(--text-lg);
-    text-transform: uppercase;
+  padding: 12px 10px !important;
+  font-weight: 700 !important;
+  font-size: 0.72rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.03em !important;
+  color: #ffffff !important;
+  background: #0f2744 !important;
+  border: none !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  white-space: normal !important;
+  line-height: 1.25 !important;
+  box-sizing: border-box !important;
+}
+
+.view-cost-table th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.view-cost-table th:last-child {
+  border-top-right-radius: 8px;
+}
+
+/* Table Body Rows */
+.view-cost-table td {
+  padding: 11px 10px !important;
+  color: #1e293b !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  font-size: 0.82rem !important;
+  vertical-align: middle !important;
+  text-align: center !important;
+  line-height: 1.3 !important;
+  box-sizing: border-box !important;
 }
 
 .view-cost-table tbody tr {
-    transition: all var(--transition-fast);
+  background: #ffffff !important;
+  transition: background 0.12s ease !important;
 }
 
 .view-cost-table tbody tr:nth-child(even) {
-    background: var(--gray-50);
+  background: #f8fafc !important;
 }
 
 .view-cost-table tbody tr:hover {
-    background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(102, 126, 234, 0.05));
-    transform: scale(1.01);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background: #f0f7ff !important;
+}
+
+/* Text and Badge Styles */
+.cost-route-name-text {
+  font-weight: 600;
+  color: #0f2744;
+  display: inline-block;
+  text-align: left;
+}
+
+.cost-stage-name-text {
+  font-weight: 600;
+  color: #334155;
+  display: inline-block;
+  text-align: left;
+}
+
+/* Route Badge */
+.cost-route-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  background: #f1f5f9;
+  color: #0f2744;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-weight: 700;
+  border-radius: 6px;
+  font-size: 0.77rem;
+  border: 1px solid #e2e8f0;
+}
+
+/* Fee Badge */
+.cost-fee-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 10px;
+  background: #ecfdf5;
+  color: #047857;
+  font-weight: 700;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  border: 1px solid #a7f3d0;
+}
+
+/* Empty & Loading States */
+.cost-table-loading,
+.cost-table-empty {
+  padding: 40px 16px !important;
+  text-align: center !important;
+  color: #64748b !important;
+  font-size: 0.88rem !important;
+  font-weight: 500 !important;
 }

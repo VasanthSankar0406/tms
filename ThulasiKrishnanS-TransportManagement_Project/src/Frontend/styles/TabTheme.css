@@ -1,0 +1,678 @@
+/* ==========================================================================
+   UNIFIED TAB THEME DESIGN SYSTEM (TMS)
+   Ensures consistent UI/UX, palette, typography, filters, buttons, and tables
+   across every single tab in the application.
+   Colors & contents preserved strictly to match established portal theme.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. MASTER CONTAINERS & CARD WRAPPERS
+   Removes redundant outer gradient box & double-card padding across all tabs
+   -------------------------------------------------------------------------- */
+.view-vehicle-master-container,
+.view-route-master-container,
+.view-driver-master-container,
+.view-stage-master-container,
+.view-cost-master-container,
+.view-permit-master-container,
+.view-permit-container,
+.view-insurance-master-container,
+.view-fc-master-container,
+.view-traveller-page-container,
+.vehicle-master-container,
+.add-vehicle-page,
+.add-vehicle-container,
+.add-route-page,
+.add-route-container,
+.add-driver-page,
+.add-driver-container,
+.add-stage-page,
+.add-stage-container,
+.add-permit-page,
+.add-permit-container,
+.add-insurance-page,
+.add-insurance-container,
+.add-fc-page,
+.add-fc-container,
+.add-traveller-container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+  box-sizing: border-box !important;
+}
+
+/* Unified Card Boxes */
+.view-vehicle-box-wrapper,
+.view-route-box-wrapper,
+.view-driver-box-wrapper,
+.view-stage-box-wrapper,
+.view-cost-box-wrapper,
+.view-permit-box-wrapper,
+.view-permit-box,
+.view-insurance-box-wrapper,
+.view-fc-box-wrapper,
+.view-traveller-card-wrapper,
+.add-vehicle-form-container,
+.add-vehicle-box,
+.add-route-form-container,
+.add-route-box,
+.add-driver-form-container,
+.add-driver-box,
+.add-stage-form-container,
+.add-stage-box,
+.add-permit-form-container,
+.add-permit-box,
+.add-insurance-form-container,
+.add-insurance-box,
+.add-fc-form-container,
+.add-fc-box,
+.add-traveller-box,
+.vehicle-options-container {
+  background: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  padding: 36px 36px 42px !important;
+  border-radius: 18px !important;
+  border: 1px solid rgba(15, 30, 50, 0.08) !important;
+  box-shadow: 0 10px 32px rgba(9, 31, 55, 0.05) !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  animation: fadeInSoft 0.25s ease-out !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. UNIFIED TITLES & SUBTITLES
+   Preserves purple gradient title and sleek subtitle underline
+   -------------------------------------------------------------------------- */
+.view-route-main-title,
+.view-driver-main-title,
+.view-stage-main-title,
+.view-cost-main-title,
+.view-permit-main-title,
+.view-insurance-main-title,
+.view-fc-main-title,
+.add-vehicle-main-title,
+.add-route-main-title,
+.add-driver-main-title,
+.add-stage-main-title,
+.add-permit-main-title,
+.add-insurance-main-title,
+.add-fc-main-title,
+.vehicle-title,
+.header-title,
+.view-cost-title,
+.view-traveller-header .header-title {
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  text-transform: uppercase !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  letter-spacing: 0.5px !important;
+  margin-top: 0 !important;
+  margin-bottom: 12px !important;
+  padding-bottom: 0 !important;
+}
+
+/* Unified Subtitles */
+.view-route-title,
+.view-driver-title,
+.view-stage-title,
+.view-permit-title,
+.view-insurance-title,
+.view-fc-title,
+.add-vehicle-title,
+.add-route-title,
+.add-driver-title,
+.add-stage-title,
+.add-permit-title,
+.add-insurance-title,
+.add-fc-title {
+  color: #2d3748 !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  margin-top: 0 !important;
+  margin-bottom: 30px !important;
+  padding-bottom: 10px !important;
+  border-bottom: 3px solid transparent !important;
+  border-image: linear-gradient(90deg, #667eea, #764ba2) 1 !important;
+  position: relative !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. UNIFIED FILTER BARS & INPUTS
+   Clean, responsive, centered filter bars with clear labels and styled inputs
+   -------------------------------------------------------------------------- */
+.view-filter-container,
+.view-vehicle-filter-container,
+.view-route-filter-container,
+.view-driver-filter-container,
+.view-stage-filter-container,
+.view-cost-filter-container,
+.view-permit-filter-container,
+.view-insurance-filter-container,
+.view-fc-filter-container,
+.view-traveller-filter-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-end !important;
+  flex-wrap: wrap !important;
+  gap: 20px !important;
+  margin-bottom: 26px !important;
+  width: 100% !important;
+}
+
+.view-filter-item,
+.view-vehicle-filter-item,
+.view-route-filter-item,
+.view-driver-filter-item,
+.view-stage-filter-item,
+.view-cost-filter-item,
+.view-permit-filter-item,
+.view-insurance-filter-item,
+.view-fc-filter-item,
+.view-traveller-filter-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 6px !important;
+  min-width: 190px !important;
+  box-sizing: border-box !important;
+}
+
+.view-filter-item label,
+.view-vehicle-filter-item label,
+.view-route-filter-item label,
+.view-driver-filter-item label,
+.view-stage-filter-item label,
+.view-cost-filter-item label,
+.view-permit-filter-item label,
+.view-insurance-filter-item label,
+.view-fc-filter-item label,
+.view-traveller-filter-item label {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #2d3748 !important;
+  letter-spacing: 0.3px !important;
+  margin-bottom: 2px !important;
+}
+
+.view-filter-item select,
+.view-filter-item input,
+.view-vehicle-filter-item select,
+.view-vehicle-filter-item input,
+.view-route-filter-item select,
+.view-route-filter-item input,
+.view-driver-filter-item select,
+.view-driver-filter-item input,
+.view-stage-filter-item select,
+.view-stage-filter-item input,
+.view-cost-filter-item select,
+.view-cost-filter-item input,
+.view-permit-filter-item select,
+.view-permit-filter-item input,
+.view-insurance-filter-item select,
+.view-insurance-filter-item input,
+.view-fc-filter-item select,
+.view-fc-filter-item input,
+.vehicle-id-dropdown,
+.permit-id-dropdown {
+  padding: 8px 16px !important;
+  width: 100% !important;
+  min-width: 210px !important;
+  height: 48px !important;
+  border: 2px solid #e2e8f0 !important;
+  border-radius: 10px !important;
+  text-align: center !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  background: #ffffff !important;
+  color: #1e293b !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+.view-filter-item select:focus,
+.view-filter-item input:focus,
+.view-vehicle-filter-item select:focus,
+.view-vehicle-filter-item input:focus,
+.view-route-filter-item select:focus,
+.view-route-filter-item input:focus,
+.view-driver-filter-item select:focus,
+.view-driver-filter-item input:focus,
+.view-stage-filter-item select:focus,
+.view-stage-filter-item input:focus,
+.view-cost-filter-item select:focus,
+.view-cost-filter-item input:focus,
+.view-permit-filter-item select:focus,
+.view-permit-filter-item input:focus,
+.view-insurance-filter-item select:focus,
+.view-insurance-filter-item input:focus,
+.view-fc-filter-item select:focus,
+.view-fc-filter-item input:focus {
+  outline: none !important;
+  border-color: #667eea !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. UNIFIED BUTTONS (Search, Report, Actions)
+   -------------------------------------------------------------------------- */
+/* Unified Navy Search Button */
+.view-search-button,
+.view-vehicle-search-button,
+.view-route-search-button,
+.view-driver-search-button,
+.view-stage-search-button,
+.view-cost-search-button,
+.view-permit-search-button,
+.view-insurance-search-button,
+.view-fc-search-button {
+  background: linear-gradient(135deg, #10385d 0%, #1f6c9c 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 0 32px !important;
+  height: 48px !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  border-radius: 10px !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 4px 14px rgba(16, 56, 93, 0.25) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  outline: none !important;
+}
+
+.view-search-button:hover,
+.view-vehicle-search-button:hover,
+.view-route-search-button:hover,
+.view-driver-search-button:hover,
+.view-stage-search-button:hover,
+.view-cost-search-button:hover,
+.view-permit-search-button:hover,
+.view-insurance-search-button:hover,
+.view-fc-search-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(16, 56, 93, 0.35) !important;
+  filter: brightness(1.08) !important;
+}
+
+.view-search-button:active,
+.view-vehicle-search-button:active,
+.view-route-search-button:active,
+.view-driver-search-button:active,
+.view-stage-search-button:active,
+.view-cost-search-button:active,
+.view-permit-search-button:active,
+.view-insurance-search-button:active,
+.view-fc-search-button:active {
+  transform: translateY(0) !important;
+}
+
+/* Unified Emerald Report Button */
+.report-button,
+.export-btn,
+.traveller-refresh-button {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 10px 22px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25) !important;
+  transition: all 0.2s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  outline: none !important;
+}
+
+.report-button:hover,
+.export-btn:hover,
+.traveller-refresh-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.35) !important;
+  filter: brightness(1.06) !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. UNIFIED TABLE DESIGN
+   Deep navy sticky header (#0f3460), crisp borders, alternating row striping
+   -------------------------------------------------------------------------- */
+.view-route-table-container,
+.view-stage-table-container,
+.view-driver-table-container,
+.view-cost-table-container,
+.view-permit-table-container,
+.view-insurance-table-container,
+.view-fc-table-container,
+.view-traveller-table-container,
+.table-responsive {
+  width: 100% !important;
+  overflow-x: auto !important;
+  border-radius: 14px !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+  margin-top: 16px !important;
+  margin-bottom: 20px !important;
+  background: #ffffff !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+/* Unified Table */
+.view-route-table,
+.view-driver-table,
+.view-stage-table,
+.view-cost-table,
+.view-permit-table,
+.view-insurance-table,
+.view-fc-table,
+.view-traveller-table,
+.traveller-table,
+.cost-table {
+  width: 100% !important;
+  min-width: 900px !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  font-size: 14px !important;
+  background: #ffffff !important;
+}
+
+/* Unified Table Header (Dark Navy Theme) */
+.view-route-table thead,
+.view-driver-table thead,
+.view-stage-table thead,
+.view-cost-table thead,
+.view-permit-table thead,
+.view-insurance-table thead,
+.view-fc-table thead,
+.view-traveller-table thead,
+.traveller-table thead,
+.cost-table thead {
+  background: linear-gradient(135deg, #0f3460 0%, #16324f 100%) !important;
+  color: #ffffff !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 5 !important;
+}
+
+.view-route-table th,
+.view-driver-table th,
+.view-stage-table th,
+.view-cost-table th,
+.view-permit-table th,
+.view-insurance-table th,
+.view-fc-table th,
+.view-traveller-table th,
+.traveller-table th,
+.cost-table th {
+  padding: 14px 16px !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  text-align: center !important;
+  border: none !important;
+  color: #ffffff !important;
+  background: transparent !important;
+  white-space: nowrap !important;
+}
+
+/* Unified Table Rows & Cells */
+.view-route-table td,
+.view-driver-table td,
+.view-stage-table td,
+.view-cost-table td,
+.view-permit-table td,
+.view-insurance-table td,
+.view-fc-table td,
+.view-traveller-table td,
+.traveller-table td,
+.cost-table td {
+  padding: 13px 16px !important;
+  text-align: center !important;
+  color: #334155 !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  font-size: 14px !important;
+  vertical-align: middle !important;
+}
+
+.view-route-table tbody tr,
+.view-driver-table tbody tr,
+.view-stage-table tbody tr,
+.view-cost-table tbody tr,
+.view-permit-table tbody tr,
+.view-insurance-table tbody tr,
+.view-fc-table tbody tr,
+.view-traveller-table tbody tr,
+.traveller-table tbody tr,
+.cost-table tbody tr {
+  background: #ffffff !important;
+  transition: background 0.15s ease !important;
+}
+
+.view-route-table tbody tr:nth-child(even),
+.view-driver-table tbody tr:nth-child(even),
+.view-stage-table tbody tr:nth-child(even),
+.view-cost-table tbody tr:nth-child(even),
+.view-permit-table tbody tr:nth-child(even),
+.view-insurance-table tbody tr:nth-child(even),
+.view-fc-table tbody tr:nth-child(even),
+.view-traveller-table tbody tr:nth-child(even),
+.traveller-table tbody tr:nth-child(even),
+.cost-table tbody tr:nth-child(even) {
+  background: #f8fafc !important;
+}
+
+.view-route-table tbody tr:hover,
+.view-driver-table tbody tr:hover,
+.view-stage-table tbody tr:hover,
+.view-cost-table tbody tr:hover,
+.view-permit-table tbody tr:hover,
+.view-insurance-table tbody tr:hover,
+.view-fc-table tbody tr:hover,
+.view-traveller-table tbody tr:hover,
+.traveller-table tbody tr:hover,
+.cost-table tbody tr:hover {
+  background: rgba(56, 189, 248, 0.08) !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. TABLE ACTION BUTTONS (Edit & Delete)
+   -------------------------------------------------------------------------- */
+.edit-button,
+button.edit-button {
+  background: #e0f2fe !important;
+  color: #0284c7 !important;
+  border: 1px solid #bae6fd !important;
+  padding: 6px 14px !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  cursor: pointer !important;
+  transition: all 0.16s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+.edit-button:hover,
+button.edit-button:hover {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+  border-color: #0284c7 !important;
+  transform: translateY(-1px) !important;
+}
+
+.delete-button,
+button.delete-button {
+  background: #fee2e2 !important;
+  color: #dc2626 !important;
+  border: 1px solid #fecaca !important;
+  padding: 6px 14px !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  cursor: pointer !important;
+  transition: all 0.16s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+.delete-button:hover,
+button.delete-button:hover {
+  background: #dc2626 !important;
+  color: #ffffff !important;
+  border-color: #dc2626 !important;
+  transform: translateY(-1px) !important;
+}
+
+/* --------------------------------------------------------------------------
+   7. UNIFIED ADD / EDIT FORM STYLES
+   Ensures Add Vehicle, Add Route, Add Driver, Add Stage, etc. match the theme
+   -------------------------------------------------------------------------- */
+.add-vehicle-form-container form,
+.add-route-form-container form,
+.add-driver-form-container form,
+.add-stage-form-container form,
+.add-permit-form-container form,
+.add-insurance-form-container form,
+.add-fc-form-container form,
+.form-card {
+  width: 100% !important;
+}
+
+.form-group label {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #2d3748 !important;
+  margin-bottom: 6px !important;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100% !important;
+  height: 48px !important;
+  padding: 8px 16px !important;
+  border: 2px solid #e2e8f0 !important;
+  border-radius: 10px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #1e293b !important;
+  background: #ffffff !important;
+  box-sizing: border-box !important;
+  transition: all 0.2s ease !important;
+}
+
+.form-group textarea {
+  height: auto !important;
+  min-height: 90px !important;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none !important;
+  border-color: #667eea !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15) !important;
+}
+
+/* Form Submit Buttons */
+.submit-btn,
+.add-btn,
+.btn-primary,
+button[type="submit"]:not(.vm-btn-primary):not(.vm-modal-save-btn):not(.attendance-filter-btn):not(.btn-apply-filter):not(.lookup-search-btn):not(.attendance-btn-save):not(.driver-btn-submit) {
+  background: linear-gradient(135deg, #10385d 0%, #1f6c9c 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 10px !important;
+  height: 48px !important;
+  padding: 0 32px !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 14px rgba(16, 56, 93, 0.25) !important;
+  transition: all 0.2s ease !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.submit-btn:hover,
+.add-btn:hover,
+.btn-primary:hover,
+button[type="submit"]:not(.vm-btn-primary):not(.vm-modal-save-btn):not(.attendance-filter-btn):not(.btn-apply-filter):not(.lookup-search-btn):not(.attendance-btn-save):not(.driver-btn-submit):hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(16, 56, 93, 0.35) !important;
+  filter: brightness(1.08) !important;
+}
+
+/* --------------------------------------------------------------------------
+   8. RESPONSIVE OPTIMIZATION
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+
+  .view-vehicle-box-wrapper,
+  .view-route-box-wrapper,
+  .view-driver-box-wrapper,
+  .view-stage-box-wrapper,
+  .view-cost-box-wrapper,
+  .view-permit-box-wrapper,
+  .view-insurance-box-wrapper,
+  .view-fc-box-wrapper,
+  .view-traveller-card-wrapper,
+  .add-vehicle-form-container,
+  .add-route-form-container,
+  .add-driver-form-container,
+  .add-stage-form-container {
+    padding: 24px 16px !important;
+    border-radius: 14px !important;
+  }
+
+  .view-filter-container,
+  .view-vehicle-filter-container,
+  .view-route-filter-container,
+  .view-driver-filter-container,
+  .view-stage-filter-container {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+
+  .view-filter-item,
+  .view-vehicle-filter-item,
+  .view-route-filter-item,
+  .view-driver-filter-item,
+  .view-stage-filter-item {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+
+  .view-search-button,
+  .report-button {
+    width: 100% !important;
+  }
+}

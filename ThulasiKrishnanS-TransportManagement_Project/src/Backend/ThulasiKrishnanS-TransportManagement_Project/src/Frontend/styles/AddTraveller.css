@@ -1,0 +1,453 @@
+/* ========================================
+   ADD TRAVELLER - MODERN FORM DESIGN
+   ======================================== */
+
+.add-traveller-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.add-traveller-form-container {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 50px 40px;
+  border-radius: 16px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1), 0 10px 40px rgba(0, 0, 0, 0.08);
+  max-width: 850px;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  animation: slideInUp 0.6s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.add-traveller-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 35px;
+  text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.5px;
+}
+
+.add-traveller-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
+.add-traveller-form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.add-traveller-form-group label {
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 10px;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  text-transform: capitalize;
+}
+
+.add-traveller-form-group input,
+.add-traveller-form-group select {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 15px;
+  background: #f7fafc;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-family: inherit;
+  color: #2d3748;
+}
+
+.add-traveller-form-group input::placeholder,
+.add-traveller-form-group select::placeholder {
+  color: #a0aec0;
+}
+
+.add-traveller-form-group input:hover,
+.add-traveller-form-group select:hover {
+  border-color: #cbd5e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.add-traveller-form-group input:focus,
+.add-traveller-form-group select:focus {
+  outline: none;
+  border-color: #667eea;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15), 0 4px 12px rgba(102, 126, 234, 0.2);
+  transform: translateY(-2px);
+}
+
+.add-traveller-submit-button {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.add-traveller-submit-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.3s ease;
+}
+
+.add-traveller-submit-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+}
+
+.add-traveller-submit-button:hover::before {
+  left: 100%;
+}
+
+/* Traveller form alternative classes */
+.traveller-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 40px 20px;
+}
+
+.traveller-form {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 50px 40px;
+  border-radius: 16px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1), 0 10px 40px rgba(0, 0, 0, 0.08);
+  max-width: 850px;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  animation: slideInUp 0.6s ease-out;
+}
+
+.traveller-form-grid-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.traveller-header-block {
+  text-align: center;
+}
+
+.traveller-subtitle {
+  margin: 0;
+  color: #4a5568;
+  font-size: 15px;
+}
+
+.traveller-import-card {
+  padding: 24px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
+  border: 1px solid rgba(102, 126, 234, 0.15);
+}
+
+.traveller-import-card h3 {
+  margin: 0 0 10px;
+  color: #2d3748;
+}
+
+.traveller-import-card p {
+  margin: 0 0 16px;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+.traveller-import-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.traveller-import-controls { align-items: end; }
+.traveller-role-picker { display: flex; flex-direction: column; gap: 8px; min-width: 150px; color: #2d3748; font-weight: 600; }
+.traveller-role-picker select { padding: 12px; border: 1px solid #cbd5e0; border-radius: 8px; background: #fff; font: inherit; }
+.traveller-manual-card { padding: 26px; border: 1px solid #e2e8f0; border-radius: 14px; background: #fff; }
+.traveller-section-heading h3 { margin: 0 0 6px; color: #2d3748; }
+.traveller-section-heading p { margin: 0 0 20px; color: #64748b; }
+.traveller-review-card { padding: 24px; border: 1px solid #fecaca; border-left: 6px solid #dc2626; border-radius: 12px; background: #fff1f2; color: #7f1d1d; }
+.traveller-review-card h3 { margin: 0 0 8px; }
+.traveller-review-card > p { margin: 0 0 16px; }
+.traveller-review-list { display: grid; gap: 12px; }
+.traveller-review-row { display: grid; grid-template-columns: minmax(180px, 1.3fr) minmax(160px, 1fr) minmax(160px, 1fr) auto; gap: 10px; align-items: center; padding: 14px; border: 1px solid #fecaca; border-radius: 9px; background: white; }
+.traveller-review-row > div { display: flex; flex-direction: column; gap: 4px; }
+.traveller-review-row span, .traveller-review-row small { color: #7f1d1d; }
+.traveller-review-row select, .traveller-review-row input { min-width: 0; padding: 10px; border: 1px solid #fca5a5; border-radius: 7px; background: white; }
+.traveller-allocate-button { padding: 10px 14px; border: 0; border-radius: 7px; background: #b91c1c; color: white; font-weight: 700; cursor: pointer; }
+.traveller-allocate-button:disabled { opacity: .6; cursor: wait; }
+.traveller-manual-card .traveller-form-group { margin-bottom: 0; }
+.traveller-manual-card .traveller-form-group input, .traveller-manual-card .traveller-form-group select { box-sizing: border-box; }
+
+@media (max-width: 850px) {
+  .traveller-review-row { grid-template-columns: 1fr 1fr; }
+  .traveller-review-row > div { grid-column: 1 / -1; }
+}
+
+.traveller-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.traveller-form-group-full {
+  grid-column: 1 / -1;
+}
+
+.traveller-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 35px;
+  text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.5px;
+}
+
+.traveller-form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.traveller-form-group label {
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 10px;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  text-transform: capitalize;
+}
+
+.traveller-form-group input,
+.traveller-form-group select {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 15px;
+  background: #f7fafc;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-family: inherit;
+  color: #2d3748;
+}
+
+.traveller-form-group input::placeholder,
+.traveller-form-group select::placeholder {
+  color: #a0aec0;
+}
+
+.traveller-form-group input:hover,
+.traveller-form-group select:hover {
+  border-color: #cbd5e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.traveller-form-group input:focus,
+.traveller-form-group select:focus {
+  outline: none;
+  border-color: #667eea;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15), 0 4px 12px rgba(102, 126, 234, 0.2);
+  transform: translateY(-2px);
+}
+
+.traveller-submit-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.traveller-secondary-button {
+  width: auto;
+  min-width: 180px;
+}
+
+.traveller-submit-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.3s ease;
+}
+
+.traveller-submit-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+}
+
+.traveller-submit-button:hover::before {
+  left: 100%;
+}
+
+.add-traveller-submit-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 16px 40px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  height: 52px;
+  margin-top: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.add-traveller-submit-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.3s ease;
+}
+
+.add-traveller-submit-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+}
+
+.add-traveller-submit-button:hover::before {
+  left: 100%;
+}
+
+.add-traveller-submit-button:active {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .traveller-form {
+    padding: 35px 25px;
+  }
+
+  .traveller-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .traveller-import-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .traveller-review-row { grid-template-columns: 1fr; }
+  .traveller-review-row > div { grid-column: auto; }
+
+  .traveller-secondary-button {
+    width: 100%;
+  }
+
+  .add-traveller-form-container {
+    padding: 35px 25px;
+    border-radius: 12px;
+  }
+
+  .add-traveller-title {
+    font-size: 26px;
+    margin-bottom: 30px;
+  }
+
+  .add-traveller-form-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .add-traveller-submit-button {
+    height: 48px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .add-traveller-page {
+    padding: 20px 15px;
+  }
+
+  .add-traveller-form-container {
+    padding: 25px 20px;
+  }
+
+  .add-traveller-title {
+    font-size: 22px;
+  }
+
+  .add-traveller-form-group input,
+  .add-traveller-form-group select {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+}

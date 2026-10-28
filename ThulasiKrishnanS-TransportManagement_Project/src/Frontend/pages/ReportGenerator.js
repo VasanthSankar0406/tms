@@ -288,7 +288,6 @@ export const exportStudentAttendanceToPDF = (attendanceData, startDate, endDate)
       ];
 
       values.forEach((value, idx) => {
-        const maxWidth = columnWidths[idx] - 2;
         const truncatedValue = value.length > 15 ? value.substring(0, 12) + "..." : value;
         doc.text(truncatedValue, xPosition, yPosition);
         xPosition += columnWidths[idx];

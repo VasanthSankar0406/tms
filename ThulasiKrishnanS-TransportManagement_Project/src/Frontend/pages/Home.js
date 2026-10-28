@@ -28,24 +28,17 @@ import { API_URL } from "../config";
 import "../styles/Home.css";
 
 import ViewVehicle from "./VehicleMaster/ViewVehicle";
-import AddVehicle from "./VehicleMaster/AddVehicle";
 import ViewPermit from "./VehicleMaster/PermitDetails/ViewPermit";
-import AddPermit from "./VehicleMaster/PermitDetails/AddPermit";
 import ViewInsurance from "./VehicleMaster/InsuranceDetails/ViewInsurance";
-import AddInsurance from "./VehicleMaster/InsuranceDetails/AddInsurance";
 import ViewFC from "./VehicleMaster/FCDetails/ViewFC";
-import AddFC from "./VehicleMaster/FCDetails/AddFC";
 import ViewStage from "./StageMaster/ViewStage";
-import AddStage from "./StageMaster/AddStage";
 import ViewRoute from "./RouteMaster/ViewRoute";
-import AddRoute from "./RouteMaster/AddRoute";
 import ViewDriver from "./DriverAllotment/ViewDriver";
-import AddDriver from "./DriverAllotment/AddDriver";
 import ViewTraveller from "./TravellerAllotment/ViewTraveller";
-import AddTraveller from "./TravellerAllotment/AddTraveller";
 import ViewCost from "./CostMaster/ViewCost";
 import Dashboard from "./Dashboard";
 import LeaveRequest from "./LeaveRequest";
+import DriverQuery from "./DriverAllotment/DriverQuery";
 import BusLocation from "./BusLocation";
 import StudentAttendance from "./StudentAttendance";
 import BusStudentLookup from "./BusStudentLookup";
@@ -55,7 +48,6 @@ import BreakdownReplacement from "./BreakdownReplacement";
 import ComplaintManagement from "./ComplaintManagement";
 import CentralizedDashboard from "./CentralizedDashboard";
 import BusFeesManagement from "./BusFeesManagement";
-import BusPendingFeesList from "./BusPendingFeesList";
 import BusSeatingAllocation from "./BusSeatingAllocation";
 import BusWashingSchedule from "./BusWashingSchedule";
 
@@ -140,17 +132,17 @@ const Home = () => {
       case "vehicles":
         setActiveSection("vehicle");
         setIsSidebarOpen(true);
-        openView("Vehicle Records", <ViewVehicle />, "vehiclemaster/viewvehicle");
+        openView("Vehicle Master", <ViewVehicle />, "vehiclemaster");
         break;
       case "routes":
         setActiveSection("route");
         setIsSidebarOpen(true);
-        openView("Route Records", <ViewRoute />, "viewroute");
+        openView("Route Master", <ViewRoute />, "viewroute");
         break;
       case "travellers":
         setActiveSection("traveller");
         setIsSidebarOpen(true);
-        openView("Traveller Records", <ViewTraveller />, "viewtraveller");
+        openView("View Travellers", <ViewTraveller />, "viewtraveller");
         break;
       case "drivers":
         setActiveSection("driver");
@@ -160,7 +152,7 @@ const Home = () => {
       case "stages":
         setActiveSection("route");
         setIsSidebarOpen(true);
-        openView("Stage Records", <ViewStage />, "viewstage");
+        openView("Stage Master", <ViewStage />, "viewstage");
         break;
       default:
         break;
@@ -170,7 +162,7 @@ const Home = () => {
   const handleOpenTracking = () => {
     setActiveSection("tracking");
     setIsSidebarOpen(true);
-    openView("Live Bus Tracking", <BusLocation />, "buslocation");
+    openView("Live Bus Location", <BusLocation />, "buslocation");
   };
 
   const formattedDate = time.toLocaleDateString("en-IN", {
@@ -187,6 +179,66 @@ const Home = () => {
   });
 
   const isSubRoute = location.pathname !== "/home" && location.pathname !== "/home/";
+  const isUnifiedMasterPage =
+    location.pathname.includes("vehiclemaster") ||
+    location.pathname.includes("routemaster") ||
+    location.pathname.includes("viewroute") ||
+    location.pathname.includes("stagemaster") ||
+    location.pathname.includes("viewstage") ||
+    location.pathname.includes("cost") ||
+    location.pathname.includes("viewtraveller") ||
+    location.pathname.includes("addtraveller") ||
+    location.pathname.includes("bus-lookup") ||
+    location.pathname.includes("student-attendance") ||
+    location.pathname.includes("viewdriver") ||
+    location.pathname.includes("adddriver") ||
+    location.pathname.includes("leave-request") ||
+    location.pathname.includes("driver-query") ||
+    location.pathname.includes("maintenance") ||
+    location.pathname.includes("breakdown") ||
+    location.pathname.includes("bus-washing") ||
+    location.pathname.includes("bus-seating") ||
+    location.pathname.includes("bus-fees") ||
+    location.pathname.includes("bus-pending-fees") ||
+    location.pathname.includes("capacity") ||
+    location.pathname.includes("buslocation") ||
+    location.pathname.includes("complaints") ||
+    activeView === "Vehicle Master" ||
+    activeView === "Permit Master" ||
+    activeView === "Insurance Master" ||
+    activeView === "Fitness Certificate Master" ||
+    activeView === "Route Master" ||
+    activeView === "Stage Master" ||
+    activeView === "Cost Details" ||
+    activeView === "Traveller Records" ||
+    activeView === "View Travellers" ||
+    activeView === "Add Traveller" ||
+    activeView === "Student & Staff Lookup" ||
+    activeView === "Student Attendance" ||
+    activeView === "Driver Records" ||
+    activeView === "View Drivers" ||
+    activeView === "Driver Management" ||
+    activeView === "Leave Requests" ||
+    activeView === "Driver Queries" ||
+    activeView === "Service History & Schedule" ||
+    activeView === "Bus Maintenance & Service Management" ||
+    activeView === "Auto Replacement & Dispatches" ||
+    activeView === "Bus Breakdown – Automatic Replacement Engine" ||
+    activeView === "Bus Washing & Cleaning Schedule" ||
+    activeView === "Bus Washing Schedule & Bay Management" ||
+    activeView === "Bus Seating Chart & Layout" ||
+    activeView === "Bus Seating Allocation & Digital Chart" ||
+    activeView === "Bus Fees & Excel Format" ||
+    activeView === "Bus Fees Management & Excel Format" ||
+    activeView === "Bus Fees Pending Defaulters List" ||
+    activeView === "Bus Seating & Route Load" ||
+    activeView === "Bus Capacity & Route Utilization Portal" ||
+    activeView === "Capacity Management" ||
+    activeView === "Live Bus Location" ||
+    activeView === "Live Bus Tracking" ||
+    activeView === "Passenger Feedback Portal" ||
+    activeView === "Complaint & Feedback Management Portal" ||
+    activeView === "Complaint Management";
 
   const navigationSections = useMemo(
     () => [
@@ -225,16 +277,10 @@ const Home = () => {
             groupTitle: "Vehicles",
             items: [
               {
-                label: "View Vehicles",
-                action: () => openView("Vehicle Records", <ViewVehicle />, "vehiclemaster/viewvehicle"),
+                label: "Vehicle Master",
+                action: () => openView("Vehicle Master", <ViewVehicle />, "vehiclemaster"),
                 type: "view",
-                path: "vehiclemaster/viewvehicle"
-              },
-              {
-                label: "Add Vehicle",
-                action: () => openView("Add Vehicle", <AddVehicle />, "vehiclemaster/addvehicle"),
-                type: "add",
-                path: "vehiclemaster/addvehicle"
+                path: "vehiclemaster"
               }
             ]
           },
@@ -242,16 +288,10 @@ const Home = () => {
             groupTitle: "Permits",
             items: [
               {
-                label: "View Permit",
-                action: () => openView("Permit Records", <ViewPermit />, "vehiclemaster/viewpermit"),
+                label: "Permit Master",
+                action: () => openView("Permit Master", <ViewPermit />, "vehiclemaster/viewpermit"),
                 type: "view",
                 path: "vehiclemaster/viewpermit"
-              },
-              {
-                label: "Add Permit",
-                action: () => openView("Add Permit", <AddPermit />, "vehiclemaster/addpermit"),
-                type: "add",
-                path: "vehiclemaster/addpermit"
               }
             ]
           },
@@ -259,16 +299,10 @@ const Home = () => {
             groupTitle: "Insurance",
             items: [
               {
-                label: "View Insurance",
-                action: () => openView("Insurance Records", <ViewInsurance />, "vehiclemaster/viewinsurance"),
+                label: "Insurance Master",
+                action: () => openView("Insurance Master", <ViewInsurance />, "vehiclemaster/viewinsurance"),
                 type: "view",
                 path: "vehiclemaster/viewinsurance"
-              },
-              {
-                label: "Add Insurance",
-                action: () => openView("Add Insurance", <AddInsurance />, "vehiclemaster/addinsurance"),
-                type: "add",
-                path: "vehiclemaster/addinsurance"
               }
             ]
           },
@@ -276,16 +310,10 @@ const Home = () => {
             groupTitle: "Fitness Certificate",
             items: [
               {
-                label: "View FC",
-                action: () => openView("Fitness Certificate Records", <ViewFC />, "vehiclemaster/viewfc"),
+                label: "Fitness Certificate Master",
+                action: () => openView("Fitness Certificate Master", <ViewFC />, "vehiclemaster/viewfc"),
                 type: "view",
                 path: "vehiclemaster/viewfc"
-              },
-              {
-                label: "Add FC",
-                action: () => openView("Add Fitness Certificate", <AddFC />, "vehiclemaster/addfc"),
-                type: "add",
-                path: "vehiclemaster/addfc"
               }
             ]
           }
@@ -301,16 +329,10 @@ const Home = () => {
             groupTitle: "Routes",
             items: [
               {
-                label: "View Routes",
-                action: () => openView("Route Records", <ViewRoute />, "viewroute"),
+                label: "Route Master",
+                action: () => openView("Route Master", <ViewRoute />, "viewroute"),
                 type: "view",
                 path: "viewroute"
-              },
-              {
-                label: "Add Route",
-                action: () => openView("Add Route", <AddRoute />, "addroute"),
-                type: "add",
-                path: "addroute"
               }
             ]
           },
@@ -318,16 +340,10 @@ const Home = () => {
             groupTitle: "Stages",
             items: [
               {
-                label: "View Stages",
-                action: () => openView("Stage Records", <ViewStage />, "viewstage"),
+                label: "Stage Master",
+                action: () => openView("Stage Master", <ViewStage />, "viewstage"),
                 type: "view",
                 path: "viewstage"
-              },
-              {
-                label: "Add Stage",
-                action: () => openView("Add Stage", <AddStage />, "addstage"),
-                type: "add",
-                path: "addstage"
               }
             ]
           },
@@ -355,15 +371,9 @@ const Home = () => {
             items: [
               {
                 label: "View Travellers",
-                action: () => openView("Traveller Records", <ViewTraveller />, "viewtraveller"),
+                action: () => openView("View Travellers", <ViewTraveller />, "viewtraveller"),
                 type: "view",
                 path: "viewtraveller"
-              },
-              {
-                label: "Add Traveller",
-                action: () => openView("Add Traveller", <AddTraveller />, "addtraveller"),
-                type: "add",
-                path: "addtraveller"
               }
             ]
           },
@@ -374,7 +384,7 @@ const Home = () => {
                 label: "Student & Staff Lookup",
                 action: () =>
                   openView(
-                    "Smart Transport Intelligence & Passenger Portal",
+                    "Student & Staff Lookup",
                     <BusStudentLookup />,
                     "bus-lookup"
                   ),
@@ -402,21 +412,21 @@ const Home = () => {
             items: [
               {
                 label: "View Drivers",
-                action: () => openView("Driver Records", <ViewDriver />, "viewdriver"),
+                action: () => openView("Driver Management", <ViewDriver />, "viewdriver"),
                 type: "view",
                 path: "viewdriver"
-              },
-              {
-                label: "Add Driver",
-                action: () => openView("Add Driver", <AddDriver />, "adddriver"),
-                type: "add",
-                path: "adddriver"
               },
               {
                 label: "Leave Requests",
                 action: () => openView("Leave Requests", <LeaveRequest />, "leave-request"),
                 type: "view",
                 path: "leave-request"
+              },
+              {
+                label: "Driver Queries",
+                action: () => openView("Driver Queries", <DriverQuery />, "driver-query"),
+                type: "view",
+                path: "driver-query"
               }
             ]
           }
@@ -434,7 +444,7 @@ const Home = () => {
               {
                 label: "Service History & Schedule",
                 action: () =>
-                  openView("Bus Maintenance & Service Management", <MaintenanceManagement />, "maintenance"),
+                  openView("Service History & Schedule", <MaintenanceManagement />, "maintenance"),
                 type: "view",
                 path: "maintenance"
               },
@@ -442,7 +452,7 @@ const Home = () => {
                 label: "Auto Replacement & Dispatches",
                 action: () =>
                   openView(
-                    "Bus Breakdown – Automatic Replacement Engine",
+                    "Auto Replacement & Dispatches",
                     <BreakdownReplacement />,
                     "breakdown"
                   ),
@@ -452,7 +462,7 @@ const Home = () => {
               {
                 label: "Bus Washing & Cleaning Schedule",
                 action: () =>
-                  openView("Bus Washing Schedule & Bay Management", <BusWashingSchedule />, "bus-washing"),
+                  openView("Bus Washing & Cleaning Schedule", <BusWashingSchedule />, "bus-washing"),
                 type: "view",
                 path: "bus-washing"
               }
@@ -499,13 +509,6 @@ const Home = () => {
                   openView("Bus Fees Management & Excel Format", <BusFeesManagement />, "bus-fees"),
                 type: "view",
                 path: "bus-fees"
-              },
-              {
-                label: "Bus Fees Pending List",
-                action: () =>
-                  openView("Bus Fees Pending Defaulters List", <BusPendingFeesList />, "bus-pending-fees"),
-                type: "view",
-                path: "bus-pending-fees"
               }
             ]
           }
@@ -524,7 +527,7 @@ const Home = () => {
                 label: "Bus Seating & Route Load",
                 action: () =>
                   openView(
-                    "Bus Capacity & Route Utilization Portal",
+                    "Bus Seating & Route Load",
                     <CapacityManagement />,
                     "capacity"
                   ),
@@ -567,7 +570,7 @@ const Home = () => {
                 label: "Passenger Feedback Portal",
                 action: () =>
                   openView(
-                    "Complaint & Feedback Management Portal",
+                    "Passenger Feedback Portal",
                     <ComplaintManagement />,
                     "complaints"
                   ),
@@ -583,13 +586,37 @@ const Home = () => {
     []
   );
 
-  // Sync activeSection with route if route matches
+  // Sync activeSection and activeView with current route
   useEffect(() => {
+    const rawPath = location.pathname.replace(/^\/home\/?/, "");
+
+    if (!rawPath) {
+      setActiveSection("overview");
+      setActiveView("Dashboard");
+      setSelectedComponent(null);
+      return;
+    }
+
+    // 1. Prioritize exact route match
     for (const sec of navigationSections) {
       for (const group of sec.groups) {
         for (const item of group.items) {
-          if (item.path && location.pathname.includes(item.path)) {
+          if (item.path && rawPath === item.path) {
             setActiveSection(sec.id);
+            setActiveView(item.label);
+            return;
+          }
+        }
+      }
+    }
+
+    // 2. Fallback to prefix matching for sub-routes
+    for (const sec of navigationSections) {
+      for (const group of sec.groups) {
+        for (const item of group.items) {
+          if (item.path && rawPath.startsWith(item.path + "/")) {
+            setActiveSection(sec.id);
+            setActiveView(item.label);
             return;
           }
         }
@@ -598,12 +625,21 @@ const Home = () => {
   }, [location.pathname, navigationSections]);
 
   const handleActivityIconClick = (sectionId) => {
-    if (activeSection === sectionId) {
-      // Toggle secondary panel if clicking the currently open section
-      setIsSidebarOpen((prev) => !prev);
-    } else {
-      setActiveSection(sectionId);
-      setIsSidebarOpen(true);
+    const targetSection = navigationSections.find((s) => s.id === sectionId);
+    if (!targetSection) return;
+
+    setActiveSection(sectionId);
+    setIsSidebarOpen(true);
+    setSearchFilter("");
+
+    // Trigger the section's primary view action to navigate directly to that tab
+    const firstItem = targetSection.groups?.[0]?.items?.[0];
+    if (firstItem && typeof firstItem.action === "function") {
+      firstItem.action();
+    }
+
+    if (window.innerWidth <= 840) {
+      setIsSidebarOpen(false);
     }
   };
 
@@ -687,10 +723,10 @@ const Home = () => {
                   <button
                     key={section.id}
                     type="button"
-                    className={`activity-icon-btn ${isSectionActive && isSidebarOpen ? "active" : ""}`}
+                    className={`activity-icon-btn ${isSectionActive ? "active" : ""}`}
                     onClick={() => handleActivityIconClick(section.id)}
                     aria-label={section.tooltip}
-                    aria-pressed={isSectionActive && isSidebarOpen}
+                    aria-pressed={isSectionActive}
                   >
                     <IconComponent size={20} strokeWidth={1.8} className="activity-icon" />
                     <span className="activity-tooltip" role="tooltip">
@@ -837,32 +873,70 @@ const Home = () => {
         </aside>
 
         {/* Main Workspace Content Area */}
-        <main className={`content-area ${!isSidebarOpen ? "expanded-view" : ""}`}>
-          <div className="content-topbar">
-            <div>
-              {(isSubRoute || selectedComponent || activeView !== "Dashboard") && <h2>{activeView}</h2>}
+        <main
+          className={`content-area ${!isSidebarOpen ? "expanded-view" : ""} ${
+            location.pathname.includes("buslocation") || activeView === "Live Bus Location"
+              ? "live-tracking-mode"
+              : ""
+          }`}
+        >
+          {!isUnifiedMasterPage && (
+            <div className="content-topbar">
+              <div className="topbar-title-block">
+                <div className="topbar-breadcrumb">
+                  <span className="breadcrumb-link" onClick={showDashboard}>Dashboard</span>
+                  {isSubRoute || selectedComponent ? (
+                    <>
+                      <span className="breadcrumb-separator">/</span>
+                      <span className="breadcrumb-section">
+                        {navigationSections.find((s) => s.id === activeSection)?.title || "Vehicle Master"}
+                      </span>
+                      <span className="breadcrumb-separator">/</span>
+                      <span className="breadcrumb-current">{activeView}</span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="breadcrumb-separator">/</span>
+                      <span className="breadcrumb-current">Operational Overview</span>
+                    </>
+                  )}
+                </div>
+                <h2 className="topbar-heading">
+                  {isSubRoute || selectedComponent ? activeView : "Operations Dashboard"}
+                </h2>
+              </div>
+              <div className="topbar-actions">
+                {isSubRoute || selectedComponent ? (
+                  <button type="button" className="secondary-action" onClick={showDashboard}>
+                    <LayoutDashboard size={15} style={{ marginRight: '6px' }} />
+                    <span>Back to Dashboard</span>
+                  </button>
+                ) : (
+                  <span className="topbar-badge-live">
+                    <span className="badge-pulse-dot" />
+                    Live Fleet Active
+                  </span>
+                )}
+              </div>
             </div>
-            {isSubRoute || selectedComponent ? (
-              <button type="button" className="secondary-action" onClick={showDashboard}>
-                Back to Dashboard
-              </button>
-            ) : null}
-          </div>
+          )}
 
           <section className="content-panel">
-            {isSubRoute ? (
-              <div className="form-container">
-                <Outlet />
-              </div>
-            ) : selectedComponent ? (
-              <div className="form-container">{selectedComponent}</div>
-            ) : (
-              <Dashboard
-                counts={counts}
-                onCardClick={handleDashboardCardClick}
-                onOpenTracking={handleOpenTracking}
-              />
-            )}
+            <div className="portal-view-transition" key={location.pathname + (selectedComponent ? `-${activeView}` : '')}>
+              {isSubRoute ? (
+                <div className="form-container">
+                  <Outlet />
+                </div>
+              ) : selectedComponent ? (
+                <div className="form-container">{selectedComponent}</div>
+              ) : (
+                <Dashboard
+                  counts={counts}
+                  onCardClick={handleDashboardCardClick}
+                  onOpenTracking={handleOpenTracking}
+                />
+              )}
+            </div>
           </section>
         </main>
       </div>

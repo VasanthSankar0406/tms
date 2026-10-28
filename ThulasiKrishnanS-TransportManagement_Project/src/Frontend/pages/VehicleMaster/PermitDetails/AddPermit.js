@@ -71,6 +71,7 @@ const AddPermit = () => {
       <div className="vp-form-container">
         <div className="vp-form">
           <h2 className="vp-title">Permit Details Form</h2>
+          {error && <p className="error-message" style={{ color: "red" }}>{error}</p>}
           <form className="vp-form-grid" onSubmit={handleSubmit}>
           <div className="vp-form-group">
               <label>Vehicle Id</label>
@@ -144,8 +145,8 @@ const AddPermit = () => {
             </select>
           </div>
 
-            <button className="vp-submit-button" type="submit">
-              Add Permit
+            <button className="vp-submit-button" type="submit" disabled={loading}>
+              {loading ? "Loading..." : "Add Permit"}
             </button>
           </form>
         </div>

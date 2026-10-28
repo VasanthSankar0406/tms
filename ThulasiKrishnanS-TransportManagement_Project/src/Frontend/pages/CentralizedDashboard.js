@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaBus, FaRoute, FaUserTie, FaUsers, FaWrench, FaCommentAlt, FaExclamationTriangle, FaBell, FaMapMarkerAlt, FaShieldAlt, FaShower, FaCheckCircle, FaClock } from 'react-icons/fa';
+import { FaBus, FaRoute, FaUserTie, FaUsers, FaWrench, FaBell, FaShower } from 'react-icons/fa';
 import { API_URL } from '../config';
 import '../styles/BusStudentLookup.css';
 
@@ -12,6 +12,7 @@ const CentralizedDashboard = () => {
   useEffect(() => {
     fetchDashboardStats();
     fetchTodayWashing();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchTodayWashing = async () => {

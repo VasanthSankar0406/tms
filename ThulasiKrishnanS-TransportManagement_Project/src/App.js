@@ -1,22 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import VehicleMaster from "./Frontend/pages/VehicleMaster/VehicleMaster";
 import Login from "./Frontend/pages/Login";
-import AddStage from "./Frontend/pages/StageMaster/AddStage";
 import ViewStage from "./Frontend/pages/StageMaster/ViewStage";
-import AddRoute from "./Frontend/pages/RouteMaster/AddRoute";
 import ViewRoute from "./Frontend/pages/RouteMaster/ViewRoute";
-import AddDriver from "./Frontend/pages/DriverAllotment/AddDriver";
 import ViewDriver from "./Frontend/pages/DriverAllotment/ViewDriver";
 import AddTraveller from "./Frontend/pages/TravellerAllotment/AddTraveller";
 import ViewTraveller from "./Frontend/pages/TravellerAllotment/ViewTraveller";
 import ViewVehicle from "./Frontend/pages/VehicleMaster/ViewVehicle";
-import AddVehicle from "./Frontend/pages/VehicleMaster/AddVehicle";
-import AddPermit from "./Frontend/pages/VehicleMaster/PermitDetails/AddPermit";
 import ViewPermit from "./Frontend/pages/VehicleMaster/PermitDetails/ViewPermit";
-import AddInsurance from "./Frontend/pages/VehicleMaster/InsuranceDetails/AddInsurance";
 import ViewInsurance from "./Frontend/pages/VehicleMaster/InsuranceDetails/ViewInsurance";
-import AddFC from "./Frontend/pages/VehicleMaster/FCDetails/AddFC";
 import ViewFC from "./Frontend/pages/VehicleMaster/FCDetails/ViewFC";
 import ViewCost from "./Frontend/pages/CostMaster/ViewCost";
 import Home from "./Frontend/pages/Home";
@@ -69,14 +61,21 @@ const App = () => {
           <Route path="viewtraveller" element={<ViewTraveller />} />
           <Route path="addtraveller" element={<AddTraveller />} />
           <Route path="viewdriver" element={<ViewDriver />} />
-          <Route path="adddriver" element={<AddDriver />} />
+          <Route path="adddriver" element={<ViewDriver initialOpenAdd={true} />} />
           <Route path="leave-request" element={<LeaveRequest />} />
+          <Route path="driver-query" element={<DriverQuery />} />
+          {/* Unified Route Master routes */}
+          <Route path="routemaster" element={<ViewRoute />} />
           <Route path="viewroute" element={<ViewRoute />} />
-          <Route path="addroute" element={<AddRoute />} />
+          <Route path="addroute" element={<ViewRoute />} />
+          {/* Unified Stage Master routes */}
+          <Route path="stagemaster" element={<ViewStage />} />
           <Route path="viewstage" element={<ViewStage />} />
-          <Route path="addstage" element={<AddStage />} />
+          <Route path="addstage" element={<ViewStage />} />
           <Route path="student-attendance" element={<StudentAttendance />} />
           <Route path="cost" element={<ViewCost />} />
+          <Route path="costmaster" element={<ViewCost />} />
+          <Route path="cost-details" element={<ViewCost />} />
 
           {/* Bus Fees & Defaulters */}
           <Route path="bus-fees" element={<BusFeesManagement />} />
@@ -88,16 +87,22 @@ const App = () => {
           {/* Bus Washing Schedule */}
           <Route path="bus-washing" element={<BusWashingSchedule />} />
 
-          {/* Vehicle Master nested routes */}
-          <Route path="vehiclemaster" element={<VehicleMaster />} />
+          {/* Unified Vehicle Master routes */}
+          <Route path="vehiclemaster" element={<ViewVehicle />} />
           <Route path="vehiclemaster/viewvehicle" element={<ViewVehicle />} />
-          <Route path="vehiclemaster/addvehicle" element={<AddVehicle />} />
-          <Route path="vehiclemaster/addpermit" element={<AddPermit />} />
+          <Route path="vehiclemaster/addvehicle" element={<ViewVehicle />} />
+          {/* Unified Permit Master routes */}
+          <Route path="vehiclemaster/permitmaster" element={<ViewPermit />} />
           <Route path="vehiclemaster/viewpermit" element={<ViewPermit />} />
-          <Route path="vehiclemaster/addinsurance" element={<AddInsurance />} />
+          <Route path="vehiclemaster/addpermit" element={<ViewPermit />} />
+          {/* Unified Insurance Master routes */}
+          <Route path="vehiclemaster/insurancemaster" element={<ViewInsurance />} />
           <Route path="vehiclemaster/viewinsurance" element={<ViewInsurance />} />
-          <Route path="vehiclemaster/addfc" element={<AddFC />} />
+          <Route path="vehiclemaster/addinsurance" element={<ViewInsurance />} />
+          {/* Unified Fitness Certificate Master routes */}
+          <Route path="vehiclemaster/fcmaster" element={<ViewFC />} />
           <Route path="vehiclemaster/viewfc" element={<ViewFC />} />
+          <Route path="vehiclemaster/addfc" element={<ViewFC />} />
           <Route path="buslocation" element={<BusLocation />} />
           <Route path="bus-lookup" element={<BusStudentLookup />} />
           <Route path="maintenance" element={<MaintenanceManagement />} />

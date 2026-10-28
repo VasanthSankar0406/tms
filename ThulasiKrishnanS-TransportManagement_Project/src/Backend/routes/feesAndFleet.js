@@ -118,6 +118,7 @@ function buildSeats(capacity) {
     const seats = [];
     const columns = ['A', 'B', 'C', 'D'];
     const frontSeatCount = Math.max(0, capacity - 5);
+    const lastRow = Math.ceil(frontSeatCount / columns.length);
     for (let index = 0; index < frontSeatCount; index += 1) {
         const column = columns[index % columns.length];
         const row = Math.floor(index / columns.length) + 1;
@@ -129,7 +130,7 @@ function buildSeats(capacity) {
         });
     }
     ['R1', 'R2', 'R3', 'R4', 'R5'].forEach((seat_no, index) => seats.push({
-        seat_no, row: rows + 1, column: `Rear-${index + 1}`,
+        seat_no, row: lastRow + 1, column: `Rear-${index + 1}`,
         position: index === 0 || index === 4 ? 'Window' : 'Middle',
         side: 'Center Back', is_rear_bench: true, is_occupied: false
     }));
@@ -561,7 +562,7 @@ router.put('/api/bus-washing/:id', async (req, res) => {
         const connection = connectionOf(req);
         const record = await recordById(connection, 'bus_washing', req.params.id);
         if (!record) return res.status(404).json({ success: false, message: 'Washing schedule record not found' });
-        if (req.body.status === 'Completed' && record.scheduled_date > todayString()) {
+        if (req.body.status === 'Completed' && record.scheduled_date > todayString() && !req.body.force) {
             return res.status(400).json({ success: false, message: `This bus is not due for washing until ${record.scheduled_date}.` });
         }
         const updated = { ...record, ...req.body };

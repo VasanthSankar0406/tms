@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
 import "../../../styles/AddInsurance.css";
 
 const AddInsurance = () => {
-  const navigate = useNavigate();
-  
-  const handleNavigation = (path) => {
-    navigate(path);
-  };
 
   
 
@@ -70,6 +64,7 @@ const AddInsurance = () => {
       <div className="ins-form-container">
         <form className="ins-form" onSubmit={handleSubmit}>
           <div className="ins-title">Insurance Details Form</div>
+          {error && <p className="error-message" style={{ color: "red" }}>{error}</p>}
 
           <div className="ins-form-group">
               <label>Vehicle Id</label>
@@ -144,7 +139,9 @@ const AddInsurance = () => {
             />
           </div>
 
-          <button type="submit" className="ins-submit-button">Add Insurance</button>
+          <button type="submit" className="ins-submit-button" disabled={loading}>
+            {loading ? "Loading..." : "Add Insurance"}
+          </button>
         </form>
       </div>
     </>

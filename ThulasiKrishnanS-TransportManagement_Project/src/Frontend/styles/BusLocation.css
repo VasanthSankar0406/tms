@@ -1,176 +1,802 @@
-/* ========================================
-   BUS LOCATION - MODERN TRACKING DESIGN
-   ======================================== */
+/* ==========================================================================
+   LIVE BUS LOCATION - REFINED VIEWPORT THEME
+   Unified Theme Matching Traveller Management with Zero Page-Scroll
+   ========================================================================== */
 
-.bus-location-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: calc(100vh - 80px);
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  padding: 30px;
+.bus-location-page {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  background: transparent !important;
 }
 
-.bus-location-header {
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(20px);
-  padding: 30px;
-  border-radius: 16px;
-  margin-bottom: 30px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1), 0 10px 40px rgba(0, 0, 0, 0.08);
+/* --------------------------------------------------------------------------
+   1. BREADCRUMBS & COMPACT PAGE HEADER
+   -------------------------------------------------------------------------- */
+.vm-breadcrumb-nav.compact-nav {
   display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.73rem;
+  color: #64748b;
+  margin-bottom: 2px;
+  flex-shrink: 0;
+}
+
+.vm-breadcrumb-nav.compact-nav .link {
+  color: #1976a5;
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.vm-breadcrumb-nav.compact-nav .link:hover {
+  color: #0f2744;
+  text-decoration: underline;
+}
+
+.vm-breadcrumb-nav.compact-nav .sep {
+  color: #cbd5e1;
+}
+
+.vm-breadcrumb-nav.compact-nav .current {
+  color: #334155;
+  font-weight: 600;
+}
+
+.vm-page-header.compact-header {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+  flex-shrink: 0;
 }
 
-.bus-location-title {
-  font-size: 28px;
-  color: #2d3748;
-  font-weight: 700;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.bus-search-container {
-  display: flex;
-  gap: 15px;
-}
-
-.bus-select {
-  padding: 14px 16px;
-  border-radius: 10px;
-  border: 2px solid #e2e8f0;
-  min-width: 250px;
-  background: #f7fafc;
-  font-size: 14px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.bus-select:focus {
-  outline: none;
-  border-color: #667eea;
-  background: #ffffff;
-  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
-}
-
-.bus-search-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: #ffffff;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 10px;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.bus-search-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
-}
-
-.map-container {
-  flex: 1;
-  background: var(--gray-100);
-  border-radius: var(--radius-2xl);
-  overflow: hidden;
-  box-shadow: var(--shadow-xl);
-  border: 4px solid var(--white);
-  position: relative;
-}
-
-/* Map Overlay Controls */
-.map-controls {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: var(--white);
-  padding: var(--space-2);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  z-index: 10;
+.vm-header-left {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: 1px;
 }
 
-.control-btn {
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: transparent;
+.vm-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.vm-title-icon-badge.compact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: #0f2744;
+  color: #ffffff;
+  border-radius: 7px;
+  box-shadow: 0 1px 4px rgba(15, 39, 68, 0.15);
+}
+
+.vm-page-title.compact {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0f2744;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.vm-total-count-badge.compact {
+  display: inline-flex;
+  align-items: center;
+  background: #eff6ff;
+  color: #1e3a8a;
+  border: 1px solid #bfdbfe;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.vm-page-subtitle.compact {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.vm-header-actions.compact {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.vm-btn-secondary.compact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 28px;
+  padding: 0 9px;
+  background: #ffffff;
+  color: #0f2744;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 600;
   cursor: pointer;
-  border-radius: var(--radius-md);
+  transition: all 0.15s ease;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.vm-btn-secondary.compact-btn:hover:not(:disabled) {
+  background: #f8fafc;
+  border-color: #94a3b8;
+  color: #091f37;
+  transform: translateY(-1px);
+}
+
+.vm-btn-preset {
+  color: #0284c7 !important;
+  border-color: #bae6fd !important;
+  background: #f0f9ff !important;
+}
+
+.vm-btn-preset:hover {
+  background: #e0f2fe !important;
+  border-color: #7dd3fc !important;
+}
+
+.spin-icon {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* --------------------------------------------------------------------------
+   2. COMPACT FLEET SUMMARY STRIP
+   -------------------------------------------------------------------------- */
+.live-fleet-summary-strip {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  color: var(--gray-600);
+  justify-content: space-between;
+  gap: 10px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 4px 10px;
+  margin-bottom: 5px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+  flex-shrink: 0;
+  flex-wrap: wrap;
 }
 
-.control-btn:hover {
-  background: var(--gray-100);
-  color: var(--primary-blue);
-}
-
-/* Bus Info Card (Overlay) */
-.bus-info-overlay {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  padding: var(--space-6);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-xl);
-  width: 300px;
-  z-index: 10;
-  border-left: 5px solid var(--accent-cyan);
-}
-
-.bus-info-header {
+.summary-strip-left {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  margin-bottom: var(--space-4);
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.bus-icon-circle {
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--white);
-  font-size: 1.5rem;
-}
-
-.bus-details h3 {
-  font-size: var(--text-lg);
-  margin-bottom: var(--space-1);
-}
-
-.bus-status {
-  font-size: var(--text-sm);
-  color: var(--success);
-  font-weight: var(--font-bold);
+.summary-strip-item {
   display: flex;
   align-items: center;
   gap: 5px;
+  font-size: 0.75rem;
+  color: #475569;
 }
 
-.status-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--success);
+.summary-strip-item strong {
+  color: #0f2744;
+  font-weight: 700;
+}
+
+.summary-strip-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.summary-strip-badge.badge-blue {
+  background: #eff6ff;
+  color: #1e3a8a;
+  border: 1px solid #bfdbfe;
+}
+
+.summary-strip-badge.badge-green {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+
+.summary-strip-badge.badge-slate {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+.pulse-dot-green {
+  width: 6px;
+  height: 6px;
+  background: #16a34a;
   border-radius: 50%;
   display: inline-block;
-  animation: pulse 2s infinite;
+  animation: pulseLive 1.8s infinite;
+}
+
+@keyframes pulseLive {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 4px rgba(22, 163, 74, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+}
+
+.stop-dot-slate {
+  width: 5px;
+  height: 5px;
+  background: #64748b;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.summary-strip-right {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  color: #64748b;
+}
+
+/* --------------------------------------------------------------------------
+   3. COMPACT FEATURED BUS INFORMATION CARD
+   -------------------------------------------------------------------------- */
+.featured-bus-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.featured-bus-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.featured-bus-main-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.featured-bus-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: #0f2744;
+  color: #ffffff;
+  padding: 2px 7px;
+  border-radius: 5px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.featured-bus-reg {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.featured-bus-sep {
+  color: #cbd5e1;
+  font-size: 0.7rem;
+}
+
+.featured-bus-route {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.featured-bus-driver {
+  font-size: 0.74rem;
+  color: #475569;
+}
+
+.featured-bus-driver strong {
+  color: #0f2744;
+}
+
+.featured-bus-telemetry {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.telemetry-speed-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 7px;
+  border-radius: 10px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.telemetry-speed-badge.moving {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+
+.telemetry-speed-badge.stopped {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+.featured-bus-region {
+  font-size: 0.73rem;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+/* Stage Progress Bar */
+.featured-bus-progress-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.progress-stops-labels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.69rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.progress-stop-item strong {
+  color: #0f2744;
+}
+
+.progress-stop-item.current strong {
+  color: #16a34a;
+}
+
+.progress-bar-track {
+  height: 3px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2563eb 0%, #10b981 100%);
+  transition: width 0.4s ease;
+}
+
+/* --------------------------------------------------------------------------
+   4. MAIN TWO-COLUMN DASHBOARD (260px Left Panel + Map)
+   -------------------------------------------------------------------------- */
+.live-tracking-main-layout {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   5. LEFT BUS LIST PANEL (260px Width)
+   -------------------------------------------------------------------------- */
+.fleet-sidebar-panel {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+}
+
+.sidebar-search-header {
+  padding: 6px 8px;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-search-box {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  padding: 3px 6px;
+  transition: border-color 0.15s ease;
+}
+
+.sidebar-search-box:focus-within {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+.sidebar-search-box input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 0.76rem;
+  color: #0f172a;
+  font-weight: 500;
+  background: transparent;
+}
+
+.sidebar-search-box input::placeholder {
+  color: #94a3b8;
+}
+
+.sidebar-search-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.69rem;
+  font-weight: 600;
+  color: #64748b;
+  padding: 0 2px;
+}
+
+.sidebar-moving-count {
+  color: #047857;
+  font-weight: 700;
+}
+
+/* Internal Scrollable Bus List */
+.fleet-scrollable-list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fleet-bus-card-item {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fleet-bus-card-item:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.fleet-bus-card-item.selected {
+  background: #eff6ff;
+  border: 2px solid #2563eb;
+  box-shadow: 0 1px 6px rgba(37, 99, 235, 0.12);
+}
+
+.bus-card-row-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bus-card-num-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: #0f2744;
+  color: #ffffff;
+}
+
+.fleet-bus-card-item.selected .bus-card-num-badge {
+  background: #2563eb;
+}
+
+.bus-card-speed-badge {
+  font-size: 0.69rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.bus-card-speed-badge.moving {
+  color: #047857;
+}
+
+.bus-card-speed-badge.stopped {
+  color: #64748b;
+}
+
+.bus-card-reg-title {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+.bus-card-meta-line {
+  font-size: 0.7rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bus-card-meta-line strong {
+  color: #334155;
+}
+
+.bus-card-route-tag {
+  font-size: 0.69rem;
+  font-weight: 600;
+  color: #1976a5;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --------------------------------------------------------------------------
+   6. MAP PANEL & INTELLIGENT POPUP STYLES
+   -------------------------------------------------------------------------- */
+.map-panel-container {
+  position: relative;
+  height: 100%;
+  min-height: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  background: #f1f5f9;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+}
+
+.map-layer-switcher {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1000;
+  display: flex;
+  gap: 3px;
+  background: #ffffff;
+  padding: 3px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  border: 1px solid #cbd5e1;
+}
+
+.layer-switch-btn {
+  border: none;
+  background: #f1f5f9;
+  color: #334155;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  transition: all 0.12s ease;
+}
+
+.layer-switch-btn.active {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.layer-switch-btn:hover:not(.active) {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.map-loading-overlay {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* Google-Maps Styled Bus Marker */
+.google-maps-bus-pin {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Custom Compact Leaflet Popup matching Traveller Management */
+.compact-leaflet-popup .leaflet-popup-content-wrapper {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-radius: 8px !important;
+  padding: 0 !important;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.14) !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+.compact-leaflet-popup .leaflet-popup-content {
+  margin: 6px 9px !important;
+  line-height: 1.3 !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 0.74rem !important;
+  min-width: 175px !important;
+  max-width: 210px !important;
+}
+
+.compact-leaflet-popup .leaflet-popup-tip {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: none !important;
+}
+
+.compact-leaflet-popup .leaflet-popup-close-button {
+  padding: 2px 4px !important;
+  color: #64748b !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  top: 3px !important;
+  right: 4px !important;
+}
+
+.compact-leaflet-popup .leaflet-popup-close-button:hover {
+  color: #0f2744 !important;
+  background: #f1f5f9 !important;
+  border-radius: 3px !important;
+}
+
+.popup-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.popup-top-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #e2e8f0;
+  gap: 6px;
+}
+
+.popup-bus-id {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-weight: 800;
+  font-size: 0.78rem;
+  color: #0f2744;
+}
+
+.popup-speed-tag {
+  display: inline-block;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.popup-speed-tag.moving {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+
+.popup-speed-tag.stopped {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+.popup-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.popup-grid-row {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: 0.72rem;
+}
+
+.popup-k {
+  color: #64748b;
+  font-weight: 600;
+  min-width: 40px;
+}
+
+.popup-v {
+  color: #1e293b;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.popup-v.reg {
+  font-family: ui-monospace, monospace;
+  font-weight: 700;
+  color: #0f2744;
+}
+
+.popup-v.gps {
+  font-family: ui-monospace, monospace;
+  font-size: 0.68rem;
+  color: #64748b;
+}
+
+/* --------------------------------------------------------------------------
+   7. RESPONSIVE BREAKPOINTS
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .live-tracking-main-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: 200px 1fr;
+  }
 }

@@ -51,6 +51,7 @@ const DriverDashboard = () => {
           });
         }
       } catch (err) {
+        setError(err.message || 'Failed to load driver information.');
         setDriverData({
           staffname: 'Assigned Driver',
           staffcode: localStorage.getItem('staffcode') || 'D001',

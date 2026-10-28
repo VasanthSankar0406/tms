@@ -1,0 +1,44 @@
+/* Background Slideshow Styles */
+.background-slideshow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    background-color: #000;
+    /* Fallback */
+    pointer-events: none;
+}
+
+.slide-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%) scale(1.05);
+    /* Slight zoom for watermark effect */
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    filter: none;
+    opacity: 0;
+}
+
+.slide-image.active {
+    opacity: 1;
+}
+
+/* White Overlay for Light Theme */
+.slideshow-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    /* Strong white overlay */
+    z-index: 0;
+}
